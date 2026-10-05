@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "report-ar-over-30",
+  "recordedWith": "fake",
+  "entries": {
+    "37a68d15e2554d0099a60d90081d94a4fded9661ed735f967649c94a7e40d846": {
+      "turn": 1,
+      "lastMessage": "What is our total accounts receivable that is more than 30 days past due?",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Loading the accounts receivable aging report."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_42cce5ebe56df7c2f302655d",
+            "name": "get_report",
+            "input": {
+              "name": "ar_aging"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3901,
+          "outputTokens": 29,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 525,
+        "firstTokenMs": 201,
+        "provider": "fake"
+      }
+    },
+    "a279f33c0e9289bb77850e722e29fccb820a2d9ffe5381ea1dd4c3bca62cc6d3": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_42cce5ebe56df7c2f302655d)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "$21,760.00 of receivables are more than 30 days past due, across 5 invoices: INV-2026-0007 Litware ($2,190.00), INV-2026-0018 Acme Logistics ($3,450.00), INV-2026-0015 Humongous Insurance ($9,120.00), INV-2026-0006 Adventure Works ($2,980.00) and INV-2026-0014 Graphic Design Institute ($4,020.00)."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4526,
+          "outputTokens": 75,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 826,
+        "firstTokenMs": 244,
+        "provider": "fake"
+      }
+    }
+  }
+}

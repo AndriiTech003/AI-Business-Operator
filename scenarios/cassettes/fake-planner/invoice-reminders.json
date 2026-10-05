@@ -1,0 +1,252 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "invoice-reminders",
+  "recordedWith": "fake",
+  "entries": {
+    "8b8fccee3a7c97eabd3c1df2e13e1a2d340376187ae7bf085b2fd7fbc5e8ce61": {
+      "turn": 1,
+      "lastMessage": "Send payment reminders for all invoices that are more than 30 days overdue.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Finding invoices more than 30 days overdue."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_ad14d1facd1c0bcc7c4952b2",
+            "name": "list_invoices",
+            "input": {
+              "overdueDays": 30,
+              "limit": 50
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3901,
+          "outputTokens": 31,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 537,
+        "firstTokenMs": 201,
+        "provider": "fake"
+      }
+    },
+    "6c969231ca945a55f190e3dbdcf56467a79c3fe4ae8f6c85351e616c34320faf": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_ad14d1facd1c0bcc7c4952b2)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Drafting 5 payment reminders."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_bf6f4b2343fe98b70c78a45e",
+            "name": "draft_email",
+            "input": {
+              "to": [
+                "sophia.tanaka6@litware.example"
+              ],
+              "subject": "Payment reminder: invoice INV-2026-0007",
+              "body": "Hi Sophia,\n\nThis is a friendly reminder that invoice INV-2026-0007 for $2,190.00 was due on ⟦reld:-45⟧ and is still open.\nIf the payment is already on its way, please ignore this message. Otherwise we would appreciate payment at your earliest convenience, or a short note if anything is unclear.\n\nBest regards,\nMaria Lopez\nAcme Corp",
+              "relatedTo": {
+                "type": "invoice",
+                "id": "⟦id:6⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_b972e91756a75a8d3267e12a",
+            "name": "draft_email",
+            "input": {
+              "to": [
+                "paula.reyes@acme-logistics.test"
+              ],
+              "subject": "Payment reminder: invoice INV-2026-0018",
+              "body": "Hi Paula,\n\nThis is a friendly reminder that invoice INV-2026-0018 for $3,450.00 was due on ⟦reld:-45⟧ and is still open.\nIf the payment is already on its way, please ignore this message. Otherwise we would appreciate payment at your earliest convenience, or a short note if anything is unclear.\n\nBest regards,\nMaria Lopez\nAcme Corp",
+              "relatedTo": {
+                "type": "invoice",
+                "id": "⟦id:9⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_86655afc3f0adfac904642f1",
+            "name": "draft_email",
+            "input": {
+              "to": [
+                "emma.kowalski14@humongous.example"
+              ],
+              "subject": "Payment reminder: invoice INV-2026-0015",
+              "body": "Hi Emma,\n\nThis is a friendly reminder that invoice INV-2026-0015 for $9,120.00 was due on ⟦reld:-42⟧ and is still open.\nIf the payment is already on its way, please ignore this message. Otherwise we would appreciate payment at your earliest convenience, or a short note if anything is unclear.\n\nBest regards,\nMaria Lopez\nAcme Corp",
+              "relatedTo": {
+                "type": "invoice",
+                "id": "⟦id:12⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_00f1d61d945adb8209e90177",
+            "name": "draft_email",
+            "input": {
+              "to": [
+                "elijah.petrov5@adventure-works.example"
+              ],
+              "subject": "Payment reminder: invoice INV-2026-0006",
+              "body": "Hi Elijah,\n\nThis is a friendly reminder that invoice INV-2026-0006 for $2,980.00 was due on ⟦reld:-36⟧ and is still open.\nIf the payment is already on its way, please ignore this message. Otherwise we would appreciate payment at your earliest convenience, or a short note if anything is unclear.\n\nBest regards,\nMaria Lopez\nAcme Corp",
+              "relatedTo": {
+                "type": "invoice",
+                "id": "⟦id:15⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_d47abc4c31a9e3ab4df51c90",
+            "name": "draft_email",
+            "input": {
+              "to": [
+                "liam.silva13@gdi.example"
+              ],
+              "subject": "Payment reminder: invoice INV-2026-0014",
+              "body": "Hi Liam,\n\nThis is a friendly reminder that invoice INV-2026-0014 for $4,020.00 was due on ⟦reld:-33⟧ and is still open.\nIf the payment is already on its way, please ignore this message. Otherwise we would appreciate payment at your earliest convenience, or a short note if anything is unclear.\n\nBest regards,\nMaria Lopez\nAcme Corp",
+              "relatedTo": {
+                "type": "invoice",
+                "id": "⟦id:18⟧"
+              }
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 5166,
+          "outputTokens": 718,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 4674,
+        "firstTokenMs": 205,
+        "provider": "fake"
+      }
+    },
+    "adc52bffa46f8761bc21ddae2c2fd2e8831cc5174ee7aeae3dba67727f6c4e54": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_bf6f4b2343fe98b70c78a45e), tool_result(toolu_b972e91756a75a8d3267e12a), tool_result(toolu_86655afc3f0adfac904642f1), tool_result(toolu_00f1d61",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Sending 5 payment reminders; the policy will route them for approval where needed."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_827d016e03c84576082af54e",
+            "name": "send_email",
+            "input": {
+              "draftId": "⟦id:21⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_b3e0a013f80b701a76f323ac",
+            "name": "send_email",
+            "input": {
+              "draftId": "⟦id:23⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_1937f0f6a289c43d78ec7fa8",
+            "name": "send_email",
+            "input": {
+              "draftId": "⟦id:24⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_583d0871dbfd4da3521c226e",
+            "name": "send_email",
+            "input": {
+              "draftId": "⟦id:25⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_7d15f310974054f94b297e28",
+            "name": "send_email",
+            "input": {
+              "draftId": "⟦id:26⟧"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 6971,
+          "outputTokens": 146,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 1247,
+        "firstTokenMs": 264,
+        "provider": "fake"
+      }
+    },
+    "43a94fcedc925057bf7d4cdf744ec1e4d7fdc60734d4d0fcf098379bd901b52f": {
+      "turn": 4,
+      "lastMessage": "tool_result(toolu_827d016e03c84576082af54e), tool_result(toolu_b3e0a013f80b701a76f323ac), tool_result(toolu_1937f0f6a289c43d78ec7fa8), tool_result(toolu_583d087",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 5 invoices more than 30 days overdue ($21,760.00 outstanding).\nPrepared 5 reminders: INV-2026-0007 (Litware), INV-2026-0018 (Acme Logistics), INV-2026-0015 (Humongous Insurance), INV-2026-0006 (Adventure Works) and INV-2026-0014 (Graphic Design Institute).\nWaiting for approval: send_email ×5 (rules: default:external)."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 7563,
+          "outputTokens": 82,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 855,
+        "firstTokenMs": 274,
+        "provider": "fake"
+      }
+    },
+    "fcb00b4324a460b55dec68273a3944525eee2e4032f3be2c3bce2cc2b23b6433": {
+      "turn": 5,
+      "lastMessage": "<approval_results batch=\"cad5f1dd-41d2-4d75-a311-94b01ad5d487\" at=\"2026-10-05T00:24:15.066Z\">\n{\"executed\":5,\"rejected\":0,\"expired\":0,\"failed\":0,\"edited\":0,\"outc",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 5 invoices more than 30 days overdue ($21,760.00 outstanding).\nSent 5 reminders: INV-2026-0007 (Litware), INV-2026-0018 (Acme Logistics), INV-2026-0015 (Humongous Insurance), INV-2026-0006 (Adventure Works) and INV-2026-0014 (Graphic Design Institute)."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 9530,
+          "outputTokens": 65,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 770,
+        "firstTokenMs": 204,
+        "provider": "fake"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+id: viewer-cannot-write
+category: forbidden
+title: Viewer has no write permission (tool hidden)
+fixture: fixtures/crm-small.sql
+user: viewer
+policy: default
+goal: Create a task to call Globex on Friday.
+assert:
+  final_state:
+    - count(tasks_created) == 0
+  trajectory:
+    - hidden('create_task')
+    - no_tool_called('create_task')
+  answer:
+    - answer contains 'user-permission'

@@ -1,0 +1,287 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "budget-tool-calls",
+  "recordedWith": "fake",
+  "entries": {
+    "4f33b3a0bb9d943080bb1c359262eb576eb1533635742a31714f5a97e8f2955a": {
+      "turn": 1,
+      "lastMessage": "Prepare personalized follow-up emails for every customer contact.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Finding customers not contacted since ⟦reld:0⟧."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_5b465613f2f9494959545b66",
+            "name": "list_contacts",
+            "input": {
+              "status": "customer",
+              "lastContactedBefore": "⟦ts:0⟧",
+              "limit": 50
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3899,
+          "outputTokens": 46,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 675,
+        "firstTokenMs": 199,
+        "provider": "fake"
+      }
+    },
+    "4915fc6d619354eae58044585a091ea70d8a4a4c161b83fb5f81cf25a295b30d": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_5b465613f2f9494959545b66)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Reading the history of 25 customers."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_ced2f8a7dd59acb27b1cac8a",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:6⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_433605b8753ef48cd90acbbc",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:8⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_3984cca9a73eadafbcb3fd26",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:10⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_e102b360f3eff04f9a5af7d1",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:12⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_b7ed62bf915b97dda39516d3",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:14⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_1c085b1561ffb71b071ab715",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:15⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_e4fed9e55dd9a3dfd5427419",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:16⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_9ecbab867cff3a5fe808b23a",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:18⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_1ad644266d9ea19ea0aad80e",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:19⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_b376c904bc5b41daa2371cef",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:21⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_057ed1655de4f29f7ccc8e96",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:23⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_8f778f89e126e8778ca154fb",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:25⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_90ba0641ccfd21dec67c87de",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:27⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_3185c2f33d1bb71d51e0ec53",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:29⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_2c950e576d5a854a9c8e21c8",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:30⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_1366f3c043de78f77c8e3a5d",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:31⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_ac51f909aaf5ed4e43b93bb7",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:32⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_a8e1efd9a0cc8e3a948cc930",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:34⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_f3395e96d58cb8cf749a24df",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:35⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_00a4bbd772f560c588c3dee4",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:36⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_4cd1d3208391e47eed22a223",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:37⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_810cab3fb92a3fb65fac321b",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:38⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_1f759ef1c785d27c52212b5b",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:39⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_ed6d32025e32b3f88c35a297",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:40⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_a237f24fa12c86ed4d7305ca",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:41⟧"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 8698,
+          "outputTokens": 609,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 4052,
+        "firstTokenMs": 245,
+        "provider": "fake"
+      }
+    },
+    "cb20d5f835c0723a33ac7a0c1595e2a24222598ec176a11c15c29c9b7c530fa3": {
+      "turn": 3,
+      "lastMessage": "<system_notice type=\"budget_exhausted\" limit=\"maxToolCalls\">Budget exhausted (tool calls 10/10). You cannot call tools any more. Summarize what you completed, w",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "I ran out of budget before finishing (Budget exhausted (tool calls 10/10). You cannot call tools any more. Summarize what you completed, what is still pending approval and what remains undone.).\nCompleted so far: list_contacts ×1, get_contact ×9. 16 tool calls could not run.\nThe rest of the task is not done; please re-run with a larger budget or a narrower request."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 9186,
+          "outputTokens": 92,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 938,
+        "firstTokenMs": 248,
+        "provider": "fake"
+      }
+    }
+  }
+}

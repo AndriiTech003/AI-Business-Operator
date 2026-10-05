@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "report-company-owner",
+  "recordedWith": "fake",
+  "entries": {
+    "42044f7673af87cb4d75dd42ae82027d5699603fd034fd29d3ea12fbd8c8fa1a": {
+      "turn": 1,
+      "lastMessage": "Who owns the Fabrikam Inc account and how many open deals do they have?",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Fabrikam Inc."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_9f08823b56162814dc9ddb96",
+            "name": "search_records",
+            "input": {
+              "query": "Fabrikam Inc",
+              "types": [
+                "company"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3900,
+          "outputTokens": 29,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 524,
+        "firstTokenMs": 200,
+        "provider": "fake"
+      }
+    },
+    "9637c6bfc81fd1e56fcba41cf451720ba24379cf7eee590f7d784d2be7c1b4e1": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_9f08823b56162814dc9ddb96)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Loading Fabrikam Inc."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_487359c82481070fe0e41b41",
+            "name": "get_company",
+            "input": {
+              "id": "⟦id:6⟧"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4033,
+          "outputTokens": 30,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 563,
+        "firstTokenMs": 236,
+        "provider": "fake"
+      }
+    },
+    "32da16321325e89ec770145c842e974c9ae2c9259f75dad5c03477029dbe9aff": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_487359c82481070fe0e41b41)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Fabrikam Inc is owned by Max Manager. It has 2 open deals worth $138,000.00."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4420,
+          "outputTokens": 19,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 484,
+        "firstTokenMs": 235,
+        "provider": "fake"
+      }
+    }
+  }
+}

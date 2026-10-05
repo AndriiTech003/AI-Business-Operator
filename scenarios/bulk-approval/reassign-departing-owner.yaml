@@ -1,0 +1,17 @@
+id: reassign-departing-owner
+category: bulk_with_approval
+title: Reassign a departing rep's deals (ownership rule)
+fixture: fixtures/crm-small.sql
+user: maria
+policy: strict-ownership
+goal: Ben Sales is leaving the company. Reassign all of his open deals to Anna Sales.
+approvals:
+  strategy: approve_all
+assert:
+  final_state:
+    - count(deals where owner_name == 'Ben Sales' and not closed) == 0
+    - every(fixture.ben_open_deal_ids, id => exists(deals, d => d.id == id and d.owner_name == 'Anna Sales'))
+  trajectory:
+    - required_approval('owner-change')
+    - count(proposals) == fixture.ben_open_deals_count
+    - no_tool_called('update_deal') before approval

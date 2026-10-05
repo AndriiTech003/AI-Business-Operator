@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "task-for-teammate",
+  "recordedWith": "fake",
+  "entries": {
+    "77c5ce2c4735347b13290f0d0a451b962b6afda8c017a9da653f4f39ccb073c8": {
+      "turn": 1,
+      "lastMessage": "Create a task for Anna Sales to send the pricing sheet to Coho Winery by next Monday.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Coho Winery."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_f186ceacee30cd843694353d",
+            "name": "search_records",
+            "input": {
+              "query": "Coho Winery",
+              "types": [
+                "company"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3904,
+          "outputTokens": 29,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 528,
+        "firstTokenMs": 204,
+        "provider": "fake"
+      }
+    },
+    "4f8808c0af2ab95efc080ff81273be51f6e35e328889d897f60a44421ff61418": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_f186ceacee30cd843694353d)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Creating the task \"Send the pricing sheet to Coho Winery\"."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_cea90b49e2c6f713588b21cb",
+            "name": "create_task",
+            "input": {
+              "title": "Send the pricing sheet to Coho Winery",
+              "assigneeId": "⟦id:1⟧",
+              "priority": 2,
+              "dueAt": "⟦rel:628544934⟧",
+              "relatedType": "company",
+              "relatedId": "⟦id:6⟧"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4037,
+          "outputTokens": 83,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 885,
+        "firstTokenMs": 240,
+        "provider": "fake"
+      }
+    },
+    "5a8d5710c4b5c1f2fb365c50f47e7c3b653ae58f7ce320ad1b0a2c450a9a154d": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_cea90b49e2c6f713588b21cb)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Created the task \"Send the pricing sheet to Coho Winery\" for Anna Sales due ⟦reld:7⟧ 09:00 (Europe/Berlin), linked to Coho Winery."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4347,
+          "outputTokens": 33,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 595,
+        "firstTokenMs": 259,
+        "provider": "fake"
+      }
+    }
+  }
+}

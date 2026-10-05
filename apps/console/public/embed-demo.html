@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:," />
+    <title>Acme Logistics – Expansion · Deal</title>
+    <style>
+      :root {
+        --bg: #f6f7fb;
+        --surface: #ffffff;
+        --border: #e5e7eb;
+        --text: #111827;
+        --muted: #6b7280;
+        --accent: #0f766e;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .appbar {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding: 12px 24px;
+        background: #0f172a;
+        color: #e2e8f0;
+        font-size: 14px;
+      }
+      .appbar strong {
+        color: #fff;
+      }
+      .appbar nav {
+        display: flex;
+        gap: 16px;
+        opacity: 0.8;
+      }
+      .page {
+        max-width: 1080px;
+        margin: 24px auto;
+        padding: 0 16px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 16px;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 18px 20px;
+      }
+      .head {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .crumbs {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      h1 {
+        margin: 4px 0 6px;
+        font-size: 22px;
+      }
+      .stage {
+        display: inline-block;
+        background: #ccfbf1;
+        color: var(--accent);
+        border-radius: 999px;
+        padding: 2px 10px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      dl {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 8px 12px;
+        margin: 0;
+        font-size: 14px;
+      }
+      dt {
+        color: var(--muted);
+      }
+      h2 {
+        font-size: 15px;
+        margin: 0 0 12px;
+      }
+      .activity {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 13px;
+      }
+      .activity li {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .activity small {
+        color: var(--muted);
+        display: block;
+      }
+      .note {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 8px;
+      }
+      @media (max-width: 760px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="appbar">
+      <strong>Business Ops</strong>
+      <nav>
+        <span>Companies</span><span>Contacts</span><span>Deals</span><span>Invoices</span><span>Approvals</span>
+      </nav>
+    </div>
+    <main class="page">
+      <section class="card head">
+        <div>
+          <div class="crumbs">Deals / Acme Logistics</div>
+          <h1>Acme Logistics – Expansion</h1>
+          <span class="stage">Proposal</span>
+        </div>
+        <ask-operator id="operator" record-type="deal" record-label="Acme Logistics – Expansion"></ask-operator>
+      </section>
+      <section class="card">
+        <h2>Details</h2>
+        <dl>
+          <dt>Amount</dt>
+          <dd>$30,000.00</dd>
+          <dt>Company</dt>
+          <dd>Acme Logistics</dd>
+          <dt>Owner</dt>
+          <dd>Maria Lopez</dd>
+          <dt>Expected close</dt>
+          <dd>in 30 days</dd>
+          <dt>Pipeline</dt>
+          <dd>Sales · Proposal</dd>
+        </dl>
+        <p class="note" id="embed-note">Loading the operator configuration…</p>
+      </section>
+      <section class="card">
+        <h2>Activity</h2>
+        <ul class="activity">
+          <li>Deal created<small>Dana Owner</small></li>
+          <li>Proposal sent to the customer<small>Maria Lopez</small></li>
+          <li>Call: customer wants a phased rollout<small>Maria Lopez</small></li>
+        </ul>
+      </section>
+    </main>
+    <script type="module">
+      const DEFAULT_DEAL_ID = 'f54fb9e2-5396-4f24-94d3-9734f30d03e0';
+      const params = new URLSearchParams(window.location.search);
+      const el = document.getElementById('operator');
+      const note = document.getElementById('embed-note');
+      let agentUrl = 'http://127.0.0.1:4600';
+      try {
+        const res = await fetch('/config.json', { cache: 'no-store' });
+        if (res.ok) {
+          const cfg = await res.json();
+          if (typeof cfg.agentUrl === 'string' && cfg.agentUrl !== '') agentUrl = cfg.agentUrl;
+        }
+      } catch {
+        agentUrl = 'http://127.0.0.1:4600';
+      }
+      let token = null;
+      try {
+        token = window.localStorage.getItem('aio.token');
+      } catch {
+        token = null;
+      }
+      el.setAttribute('agent-url', agentUrl);
+      el.setAttribute('record-id', params.get('dealId') || DEFAULT_DEAL_ID);
+      el.setAttribute('console-url', window.location.origin);
+      if (token) el.setAttribute('token', token);
+      note.textContent = token
+        ? 'The “Ask operator” button sends your task with this deal as context to ' + agentUrl + '.'
+        : 'Log in to the operator console in this browser first — the panel reuses its session token.';
+      await import('/embed/ask-operator.js');
+    </script>
+  </body>
+</html>

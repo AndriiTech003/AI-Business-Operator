@@ -1,0 +1,49 @@
+{
+  "name": "ai-business-operator",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.6",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "bash scripts/dev.sh",
+    "build": "turbo run build",
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "turbo run typecheck && tsc -p e2e/tsconfig.json --noEmit",
+    "test": "turbo run test --concurrency=4",
+    "test:unit": "turbo run test --concurrency=4",
+    "test:integration": "turbo run build --output-logs=errors-only && turbo run test:integration --concurrency=1",
+    "test:e2e": "turbo run build --output-logs=errors-only && playwright test -c e2e/playwright.config.ts",
+    "db:migrate": "turbo run build --filter=@aio/agent --output-logs=errors-only && node apps/agent/dist/migrate.js",
+    "db:generate": "pnpm --filter @aio/agent db:generate",
+    "seed": "turbo run build --filter=@aio/agent --output-logs=errors-only && node apps/agent/dist/seed.js",
+    "eval": "turbo run build --filter=@aio/eval... --output-logs=errors-only && node apps/eval/dist/cli.js run",
+    "eval:record": "turbo run build --filter=@aio/eval... --output-logs=errors-only && node apps/eval/dist/cli.js run --record",
+    "eval:fixtures": "turbo run build --filter=@aio/eval... --output-logs=errors-only && node apps/eval/dist/cli.js fixtures",
+    "smoke": "bash scripts/smoke.sh",
+    "loadtest": "turbo run build --output-logs=errors-only && node scripts/loadtest.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "1.63.0",
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.23.1",
+    "eslint": "^10.11.0",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "globals": "^16.0.0",
+    "pg": "^8.23.1",
+    "prettier": "^3.9.9",
+    "turbo": "^2.11.6",
+    "typescript": "6.0.3",
+    "typescript-eslint": "^8.71.0",
+    "vitest": "5.0.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "@ashamrai/expr": "file:vendor/ashamrai-expr-0.1.0.tgz"
+    }
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "budget-cost",
+  "recordedWith": "fake",
+  "entries": {
+    "feb90d565de14ba47296a6a908b18e7d534f0b39d2d652b26eb34a7372aea316": {
+      "turn": 1,
+      "lastMessage": "For every open deal, summarize its latest activity.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Listing all open deals."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_851a0dbf0c093bd812514413",
+            "name": "list_deals",
+            "input": {
+              "open": true,
+              "limit": 50
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3895,
+          "outputTokens": 24,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 539,
+        "firstTokenMs": 195,
+        "provider": "fake"
+      }
+    },
+    "e1fc2222e86ce3a4fa36d9a35bca5c8dbefd8280b624e635252740bd123ef10b": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_851a0dbf0c093bd812514413)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Reading the activity of 18 deals."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_85c4ef4518a35ebbd0e77a66",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:6⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_92745ea4cfe8bef1a6178a29",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:11⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_a724c1b7b951a7ae6c57ed32",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:14⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_7c7e470888e5f57fe42f9b24",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:18⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_fc6608ddcfbc6ab63681f6ca",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:21⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_d4fe9939634630d263f0fe65",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:25⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_bd41d439063f6b50d86c0a82",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:28⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_bdaa2854798c247f58517d39",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:32⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_b28e427f49fb971c938d9bd5",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:35⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_2d2db9f13f5c37771e9f3c28",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:37⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_36c3ce314719931376cdc612",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:40⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_37eae5137398079da2651b5c",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:42⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_71e3edac67b615d0374182b6",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:45⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_63eb059443c4c00c4e9c4b04",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:48⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_d6fde60d58ad5b2e497b5656",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:51⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_c4e3f3cb37bb340297f9e647",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:53⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_4595b203b8a9e65750f6f7e3",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:56⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_f655b50621ca29644560d761",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:59⟧"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 8879,
+          "outputTokens": 441,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 3025,
+        "firstTokenMs": 232,
+        "provider": "fake"
+      }
+    },
+    "b5b3e4a846144d02f646fe34a5683b6e48f8daf8622347904c8600a9d829fdc4": {
+      "turn": 3,
+      "lastMessage": "<system_notice type=\"budget_exhausted\" limit=\"maxCostUsd\">Budget exhausted (cost $0.0302/$0.02). You cannot call tools any more. Summarize what you completed, w",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "I ran out of budget before finishing (Budget exhausted (cost $0.0302/$0.02). You cannot call tools any more. Summarize what you completed, what is still pending approval and what remains undone.).\nCompleted so far: list_deals ×1, get_deal ×18.\nThe rest of the task is not done; please re-run with a larger budget or a narrower request."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 14745,
+          "outputTokens": 84,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 899,
+        "firstTokenMs": 181,
+        "provider": "fake"
+      }
+    }
+  }
+}

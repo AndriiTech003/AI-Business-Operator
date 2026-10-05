@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-03T02:51:58.341Z",
+  "environment": {
+    "cpus": 8,
+    "model": "Apple M1",
+    "loadavg": [
+      4.35009765625,
+      3.73193359375,
+      3.5537109375
+    ],
+    "node": "v26.7.0",
+    "llm": "fake planner (no network, synthetic latency not slept)"
+  },
+  "runs": 200,
+  "concurrency": 16,
+  "seconds": 2.547,
+  "runsPerSecond": 78.52,
+  "latencyMs": {
+    "p50": 185,
+    "p95": 351,
+    "max": 440
+  },
+  "statuses": {
+    "completed": 200
+  },
+  "toolCalls": 320,
+  "llmCalls": 520
+}

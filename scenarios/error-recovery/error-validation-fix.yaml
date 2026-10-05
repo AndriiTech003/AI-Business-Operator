@@ -1,0 +1,18 @@
+id: error-validation-fix
+category: error_recovery
+title: Validation error, agent corrects the call
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Create a task to call Globex on Friday.
+faults:
+  - tool: create_task
+    times: 1
+    error: 'MCP error -32602: Input validation error: Invalid arguments for tool create_task: Invalid ISO datetime at dueAt'
+    status: 400
+assert:
+  final_state:
+    - count(tasks_created) == 1
+    - every(tasks_created, t => weekday(t.due_at) == 'Friday')
+  trajectory:
+    - tool_calls_of('create_task') == 2

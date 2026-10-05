@@ -1,0 +1,37 @@
+{
+  "name": "@aio/console",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build && vite build -c vite.embed.config.ts",
+    "dev": "vite --port 4610 --strictPort --host 127.0.0.1",
+    "preview": "vite preview --port 4611 --strictPort --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@aio/contracts": "workspace:*",
+    "@ashamrai/expr": "file:../../vendor/ashamrai-expr-0.1.0.tgz",
+    "@codemirror/commands": "^6.11.1",
+    "@codemirror/language": "^6.12.4",
+    "@codemirror/lint": "^6.9.7",
+    "@codemirror/state": "^6.7.6",
+    "@codemirror/view": "^6.43.13",
+    "@lezer/highlight": "^1.2.5",
+    "@tanstack/react-query": "^5.104.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "jsdom": "^30.1.1",
+    "typescript": "6.0.3",
+    "vite": "^8.3.2",
+    "vitest": "5.0.3"
+  }
+}

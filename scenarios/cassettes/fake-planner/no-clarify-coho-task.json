@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "no-clarify-coho-task",
+  "recordedWith": "fake",
+  "entries": {
+    "b6d63bfec218e1638cede609298d3f63747c0bc8d4f3d985827181a9ef24dfc6": {
+      "turn": 1,
+      "lastMessage": "Create a task to call Coho Winery tomorrow morning.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Coho Winery."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_f186ceacee30cd843694353d",
+            "name": "search_records",
+            "input": {
+              "query": "Coho Winery",
+              "types": [
+                "company"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3895,
+          "outputTokens": 29,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 569,
+        "firstTokenMs": 195,
+        "provider": "fake"
+      }
+    },
+    "2b53103c6b0460d6f31eb363efc037b255c360d87b0f8108aac64312c6b7d64f": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_f186ceacee30cd843694353d)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Creating the task \"Call Coho Winery\"."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_a598d2a68bf18e801b1a3573",
+            "name": "create_task",
+            "input": {
+              "title": "Call Coho Winery",
+              "assigneeId": "⟦id:0⟧",
+              "priority": 2,
+              "dueAt": "⟦rel:110144934⟧",
+              "relatedType": "company",
+              "relatedId": "⟦id:6⟧"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4028,
+          "outputTokens": 73,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 816,
+        "firstTokenMs": 231,
+        "provider": "fake"
+      }
+    },
+    "ee4f7dd72f716212b47e5950ab62f583f9b77fff8f2361de3a118d216166bc37": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_a598d2a68bf18e801b1a3573)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Created the task \"Call Coho Winery\" for Maria Lopez due ⟦reld:1⟧ 09:00 (Europe/Berlin), linked to Coho Winery."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4323,
+          "outputTokens": 28,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 541,
+        "firstTokenMs": 235,
+        "provider": "fake"
+      }
+    }
+  }
+}

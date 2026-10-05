@@ -1,0 +1,15 @@
+id: followup-all-rejected
+category: bulk_with_approval
+title: All e-mails rejected; agent creates call tasks instead
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Find leads we haven't contacted in over 7 days and prepare follow-up emails.
+approvals:
+  strategy: reject_all
+assert:
+  final_state:
+    - count(emails_sent) == 0
+    - count(tasks_created where title startsWith 'Call') == fixture.stale_leads_count
+  trajectory:
+    - count(proposals where status == 'rejected') == fixture.stale_leads_count

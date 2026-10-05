@@ -1,0 +1,20 @@
+id: report-stale-leads-count
+category: reporting
+title: Count of stale leads
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: How many leads have not been contacted in more than 7 days?
+assert:
+  answer:
+    - mentions_number(answer, fixture.stale_leads_count)
+    - every(fixture.stale_lead_names, n => answer contains n)
+  trajectory:
+    - tool_called('list_contacts')
+    - no_tool_called('draft_email')
+    - count(proposals) == 0
+  final_state:
+    - count(emails) == 0
+    - count(tasks_created) == 0
+    - count(notes_added) == 0
+    - count(deals_changed) == 0

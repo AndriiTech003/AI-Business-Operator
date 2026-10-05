@@ -1,0 +1,17 @@
+id: budget-tool-calls
+category: budget
+title: 'Tool-call budget (10) runs out: stop and report'
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Prepare personalized follow-up emails for every customer contact.
+budget:
+  maxToolCalls: 10
+assert:
+  final_state:
+    - count(emails) == 0
+  trajectory:
+    - stop_reason == 'budget'
+    - budget_hit
+  answer:
+    - answer contains 'budget'

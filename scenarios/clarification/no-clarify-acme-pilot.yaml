@@ -1,0 +1,14 @@
+id: no-clarify-acme-pilot
+category: clarification
+title: 'Distinguishing word in the request: do not ask'
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Move the Acme Logistics pilot deal to Proposal.
+expected_clarification: false
+assert:
+  final_state:
+    - deal('Acme Logistics – Pilot').stage == 'Proposal'
+    - count(deals_changed) == 1
+  trajectory:
+    - not asked_clarification

@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "report-negotiation-stage",
+  "recordedWith": "fake",
+  "entries": {
+    "8588369b88be388ff5a6c94489c104c59e89e7625fc34388b6279a653743f3a8": {
+      "turn": 1,
+      "lastMessage": "How many open deals are in the Negotiation stage and what are they worth in total?",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Listing open deals in Negotiation."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_947a9a8b100ed7386559433c",
+            "name": "list_deals",
+            "input": {
+              "stage": "Negotiation",
+              "open": true,
+              "limit": 50
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3903,
+          "outputTokens": 33,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 551,
+        "firstTokenMs": 203,
+        "provider": "fake"
+      }
+    },
+    "4192bc684122c45e4efaaea99f665fff46c792bfd118b028aef4a142efd88360": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_947a9a8b100ed7386559433c)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "There are 5 open deals in Negotiation, worth $276,000.00 in total: Graphic Design Institute – Pilot ($86,000.00), Lucerne Publishing – Renewal ($85,000.00), Wide World Importers – Annual license ($38,000.00), Litware – Expansion ($37,000.00) and Acme Logistics – Expansion ($30,000.00)."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 5356,
+          "outputTokens": 72,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 788,
+        "firstTokenMs": 201,
+        "provider": "fake"
+      }
+    }
+  }
+}

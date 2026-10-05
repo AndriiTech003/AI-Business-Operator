@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "deal-amount-large-change",
+  "recordedWith": "fake",
+  "entries": {
+    "27ad7bbf95376b4cabd5e80d193dda38d7e3b756bda43f5e8078549cfa55b513": {
+      "turn": 1,
+      "lastMessage": "Change the amount of the Acme Logistics – Pilot deal to $20,000.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Acme Logistics – Pilot."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_dbb8c063132200bb99362ab7",
+            "name": "search_records",
+            "input": {
+              "query": "Acme Logistics Pilot",
+              "types": [
+                "deal"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3898,
+          "outputTokens": 34,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 602,
+        "firstTokenMs": 198,
+        "provider": "fake"
+      }
+    },
+    "62d541361bec47d0456859530f4bc808d070d2a77b9b9f8f68e9d9887e8fd3f7": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_dbb8c063132200bb99362ab7)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Updating Acme Logistics – Pilot: amount → $20,000.00."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_737cdaebefa75f38c343a0ef",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:6⟧",
+              "patch": {
+                "amountCents": 2000000
+              }
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4094,
+          "outputTokens": 46,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 670,
+        "firstTokenMs": 200,
+        "provider": "fake"
+      }
+    },
+    "9c5721cbda2b204d163434ffd1b33727402385f16cef036c7e5d743e480cedbb": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_737cdaebefa75f38c343a0ef)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "The change to Acme Logistics – Pilot (amount → $20,000.00) is waiting for approval.\nWaiting for approval: update_deal ×1 (rules: deal-amount-change)."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4237,
+          "outputTokens": 38,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 615,
+        "firstTokenMs": 246,
+        "provider": "fake"
+      }
+    },
+    "dbacde657f2aef3dcf86e0c69cdd1ab7fff104422910580978e42d72d139137e": {
+      "turn": 4,
+      "lastMessage": "<approval_results batch=\"a3f6cc5c-999c-4a9d-ba0b-9d1af36d26f8\" at=\"2026-10-05T00:24:15.066Z\">\n{\"executed\":1,\"rejected\":0,\"expired\":0,\"failed\":0,\"edited\":0,\"outc",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Updated Acme Logistics – Pilot: amount → $20,000.00 (approved)."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4750,
+          "outputTokens": 16,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 446,
+        "firstTokenMs": 274,
+        "provider": "fake"
+      }
+    }
+  }
+}

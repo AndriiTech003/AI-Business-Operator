@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "report-invoice-status",
+  "recordedWith": "fake",
+  "entries": {
+    "b5aa6e416349a046d05e1ce3f0f49631c804aeac05881704641de6a168d36b4d": {
+      "turn": 1,
+      "lastMessage": "What is the status and remaining balance of invoice INV-2026-0006?",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up INV-2026-0006."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_76f22a2ad258ac8fd8a6b661",
+            "name": "search_records",
+            "input": {
+              "query": "INV-2026-0006",
+              "types": [
+                "invoice"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3899,
+          "outputTokens": 31,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 585,
+        "firstTokenMs": 199,
+        "provider": "fake"
+      }
+    },
+    "a38093e842545fe785be932814e15ef84f5f212cc05332305d7048c83163dbb3": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_76f22a2ad258ac8fd8a6b661)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Loading invoice INV-2026-0006."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_154159eb1e08b30ba5b5530d",
+            "name": "get_invoice",
+            "input": {
+              "id": "⟦id:6⟧"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4383,
+          "outputTokens": 32,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 575,
+        "firstTokenMs": 198,
+        "provider": "fake"
+      }
+    },
+    "b2f0bb3c226a485c05e6646bdb97cda6af60a34b5a5d9dfc19486a8cc414be0e": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_154159eb1e08b30ba5b5530d)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Invoice INV-2026-0006 for Adventure Works is partially_paid: total $4,470.00, paid $1,490.00, remaining balance $2,980.00, due ⟦reld:-36⟧."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 5031,
+          "outputTokens": 35,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 591,
+        "firstTokenMs": 264,
+        "provider": "fake"
+      }
+    }
+  }
+}

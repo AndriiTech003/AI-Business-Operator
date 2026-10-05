@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "no-clarify-acme-pilot",
+  "recordedWith": "fake",
+  "entries": {
+    "5027efe69583c7e49b43c8d136bb538f6d9a75535d667e884cb9b63ea81adc47": {
+      "turn": 1,
+      "lastMessage": "Move the Acme Logistics pilot deal to Proposal.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Acme Logistics pilot."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_410841a69c39a370f3f19ec7",
+            "name": "search_records",
+            "input": {
+              "query": "Acme Logistics pilot",
+              "types": [
+                "deal"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3894,
+          "outputTokens": 33,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 592,
+        "firstTokenMs": 194,
+        "provider": "fake"
+      }
+    },
+    "baca486dbf1110dd31cc9e7fad9bb88200da9442d7064c547e0fa6e7506ffb8b": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_410841a69c39a370f3f19ec7)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Updating Acme Logistics – Pilot: stage → Proposal."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_36ee497ef5432e848d68155d",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:6⟧",
+              "patch": {
+                "stage": "Proposal"
+              }
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4089,
+          "outputTokens": 44,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 653,
+        "firstTokenMs": 195,
+        "provider": "fake"
+      }
+    },
+    "8846e766af0cfc158c7ff516ab8a9e7f236edcdd32fc0d5a4c290ae540c4d938": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_36ee497ef5432e848d68155d)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Updated Acme Logistics – Pilot: stage → Proposal."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4481,
+          "outputTokens": 13,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 459,
+        "firstTokenMs": 199,
+        "provider": "fake"
+      }
+    }
+  }
+}

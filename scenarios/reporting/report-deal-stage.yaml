@@ -1,0 +1,19 @@
+id: report-deal-stage
+category: reporting
+title: Stage and close date of a deal
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Which stage is the Trey Research – Expansion deal in, and when is it expected to close?
+assert:
+  answer:
+    - answer contains fixture.trey_expansion_stage
+    - answer contains fixture.trey_expansion_close_date
+  trajectory:
+    - tool_called('get_deal')
+    - count(proposals) == 0
+  final_state:
+    - count(emails) == 0
+    - count(tasks_created) == 0
+    - count(notes_added) == 0
+    - count(deals_changed) == 0

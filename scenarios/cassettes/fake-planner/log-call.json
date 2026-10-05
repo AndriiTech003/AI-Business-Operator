@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "log-call",
+  "recordedWith": "fake",
+  "entries": {
+    "b69a91be1e214f8572cadd54352e5774f146778324d819cd4be381c1b0729bbb": {
+      "turn": 1,
+      "lastMessage": "Log a call with Paula Reyes from Acme Logistics: she confirmed the renewal budget for Q1.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Paula Reyes."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_66b22832ad648f156a8da23f",
+            "name": "search_records",
+            "input": {
+              "query": "Paula Reyes",
+              "types": [
+                "contact"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3905,
+          "outputTokens": 29,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 529,
+        "firstTokenMs": 205,
+        "provider": "fake"
+      }
+    },
+    "eebd80268772f28b853496d684e9bdfe7315349d9b25ceec203a6b1ec76879b6": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_66b22832ad648f156a8da23f)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Adding the call log to Paula Reyes."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_874d838304ade27dde92461a",
+            "name": "add_note",
+            "input": {
+              "subject": {
+                "type": "contact",
+                "id": "⟦id:6⟧"
+              },
+              "body": "She confirmed the renewal budget for Q1.",
+              "kind": "call"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4041,
+          "outputTokens": 56,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 727,
+        "firstTokenMs": 244,
+        "provider": "fake"
+      }
+    },
+    "6473cc46f06af02fd853843c3302f8777535be82098b7365845f2a049a2bcc31": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_874d838304ade27dde92461a)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Logged the call on Paula Reyes: \"She confirmed the renewal budget for Q1.\""
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4234,
+          "outputTokens": 19,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 498,
+        "firstTokenMs": 243,
+        "provider": "fake"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+dist
+dist-*
+coverage
+pnpm-lock.yaml
+docs
+README.md
+.smoke
+.dev
+.e2e
+playwright-report
+test-results
+vendor
+scenarios/cassettes
+scenarios/fixtures/*.sql
+**/migrations/**
+**/__snapshots__
+**/.turbo

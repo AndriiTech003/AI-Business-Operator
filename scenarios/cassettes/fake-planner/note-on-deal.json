@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "note-on-deal",
+  "recordedWith": "fake",
+  "entries": {
+    "3ea73e812866800049d4c68f16b9e45dba0f7860c41ff2df372cbd2523e39f06": {
+      "turn": 1,
+      "lastMessage": "Add a note to the Margie Travel – Annual license deal: the customer asked for a three-year quote.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Margie Travel – Annual license."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_935ae0cca735b5c56627a1f9",
+            "name": "search_records",
+            "input": {
+              "query": "Margie Travel Annual license",
+              "types": [
+                "deal"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3907,
+          "outputTokens": 38,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 585,
+        "firstTokenMs": 207,
+        "provider": "fake"
+      }
+    },
+    "41c40582e9d52545014140b1585aaf9c5ed4652c8d67525671558eb601d8421c": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_935ae0cca735b5c56627a1f9)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Adding the note to Margie Travel – Annual license."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_c5e1b5ff831cdd5bd4e36f0e",
+            "name": "add_note",
+            "input": {
+              "subject": {
+                "type": "deal",
+                "id": "⟦id:6⟧"
+              },
+              "body": "The customer asked for a three-year quote.",
+              "kind": "note"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4296,
+          "outputTokens": 60,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 756,
+        "firstTokenMs": 208,
+        "provider": "fake"
+      }
+    },
+    "ac798961400fb7956f28eea64efedf20f2c91ab6b25a44d1e5f9e590408c1e18": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_c5e1b5ff831cdd5bd4e36f0e)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Added the note on Margie Travel – Annual license: \"The customer asked for a three-year quote.\""
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4493,
+          "outputTokens": 24,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 537,
+        "firstTokenMs": 211,
+        "provider": "fake"
+      }
+    }
+  }
+}

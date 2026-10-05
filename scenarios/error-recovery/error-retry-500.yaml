@@ -1,0 +1,17 @@
+id: error-retry-500
+category: error_recovery
+title: Tool returns 500 once, then succeeds
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: How many overdue invoices does Acme Logistics have, and what is the total outstanding amount?
+faults:
+  - tool: list_invoices
+    times: 1
+    error: '500 internal_error: Internal Server Error (simulated)'
+    status: 500
+assert:
+  answer:
+    - mentions_money(answer, fixture.acme_overdue_total_cents)
+  trajectory:
+    - tool_calls_of('list_invoices') == 2

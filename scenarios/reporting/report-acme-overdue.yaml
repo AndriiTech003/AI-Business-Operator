@@ -1,0 +1,22 @@
+id: report-acme-overdue
+category: reporting
+title: Overdue invoices of one company (exact numbers)
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: How many overdue invoices does Acme Logistics have, and what is the total outstanding amount?
+assert:
+  answer:
+    - mentions_number(answer, fixture.acme_overdue_count)
+    - mentions_money(answer, fixture.acme_overdue_total_cents)
+    - every(fixture.acme_overdue_numbers, n => answer contains n)
+  trajectory:
+    - tool_called('search_records')
+    - tool_called('list_invoices')
+    - steps <= 6
+    - count(proposals) == 0
+  final_state:
+    - count(emails) == 0
+    - count(tasks_created) == 0
+    - count(notes_added) == 0
+    - count(deals_changed) == 0

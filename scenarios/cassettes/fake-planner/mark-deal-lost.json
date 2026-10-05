@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "mark-deal-lost",
+  "recordedWith": "fake",
+  "entries": {
+    "61dfbdc45bbc734e9d3d1481086e587ad757a9d64a922bfbffead29f4ab4a35f": {
+      "turn": 1,
+      "lastMessage": "Mark the VanArsdel – Renewal deal as lost because the budget was cut.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up VanArsdel – Renewal."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_c833814250109434b8ea8f07",
+            "name": "search_records",
+            "input": {
+              "query": "VanArsdel Renewal",
+              "types": [
+                "deal"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3900,
+          "outputTokens": 32,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 542,
+        "firstTokenMs": 200,
+        "provider": "fake"
+      }
+    },
+    "8d2d1ed4e74aaf94066af510d3d7922274090cd9a928af0dd1d3cfb2c5c84472": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_c833814250109434b8ea8f07)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Updating VanArsdel – Renewal: stage → Lost (the budget was cut)."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_8cec16b1151d0c6b5da9ab1a",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:6⟧",
+              "patch": {
+                "stage": "Lost",
+                "lostReason": "The budget was cut"
+              }
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4023,
+          "outputTokens": 54,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 697,
+        "firstTokenMs": 226,
+        "provider": "fake"
+      }
+    },
+    "f44fea89eb1e8985a8f048f530b11a97d2969ad817b3b6f12c80ed62ddc0c099": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_8cec16b1151d0c6b5da9ab1a)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "The change to VanArsdel – Renewal (stage → Lost (the budget was cut)) is waiting for approval.\nWaiting for approval: update_deal ×1 (rules: deal-close)."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4176,
+          "outputTokens": 38,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 604,
+        "firstTokenMs": 185,
+        "provider": "fake"
+      }
+    },
+    "137ede5b8c5731f08dbc886b1272b87046f71bc435e57460a26cce81ae9674d1": {
+      "turn": 4,
+      "lastMessage": "<approval_results batch=\"4f5a6e9a-a502-4636-9f35-8e7eb4fdbcfd\" at=\"2026-10-05T00:24:15.066Z\">\n{\"executed\":1,\"rejected\":0,\"expired\":0,\"failed\":0,\"edited\":0,\"outc",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Updated VanArsdel – Renewal: stage → Lost (the budget was cut) (approved)."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4722,
+          "outputTokens": 19,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 486,
+        "firstTokenMs": 246,
+        "provider": "fake"
+      }
+    }
+  }
+}

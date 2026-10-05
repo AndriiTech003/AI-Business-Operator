@@ -1,0 +1,19 @@
+id: report-company-owner
+category: reporting
+title: Account owner and open deals
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Who owns the Fabrikam Inc account and how many open deals do they have?
+assert:
+  answer:
+    - answer contains fixture.fabrikam_owner
+    - mentions_number(answer, fixture.fabrikam_open_deals)
+  trajectory:
+    - tool_called('get_company')
+    - count(proposals) == 0
+  final_state:
+    - count(emails) == 0
+    - count(tasks_created) == 0
+    - count(notes_added) == 0
+    - count(deals_changed) == 0

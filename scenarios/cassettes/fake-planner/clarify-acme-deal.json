@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "clarify-acme-deal",
+  "recordedWith": "fake",
+  "entries": {
+    "5aa55bbba78382e992adc723c934af583964692a701f05619f2644c6aef3fb62": {
+      "turn": 1,
+      "lastMessage": "Update the deal with Acme Logistics to $33,000.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Acme Logistics."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_900a63842dd319808554c090",
+            "name": "search_records",
+            "input": {
+              "query": "Acme Logistics",
+              "types": [
+                "deal"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3894,
+          "outputTokens": 30,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 574,
+        "firstTokenMs": 194,
+        "provider": "fake"
+      }
+    },
+    "ef248f0fa8e5ad39b04b8225b34bfef2f8057a082d3d1fd10e70d2b152d01bd7": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_900a63842dd319808554c090)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "I found 3 deals matching \"Acme Logistics\":\n- Acme Logistics – Annual license (48000.00 USD)\n- Acme Logistics – Expansion (30000.00 USD)\n- Acme Logistics – Pilot (12000.00 USD)\nWhich one do you mean?"
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4087,
+          "outputTokens": 50,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 687,
+        "firstTokenMs": 193,
+        "provider": "fake"
+      }
+    },
+    "7543b9779f211bc04f4f7a9ca847fc42061070d706cb66427e524728e7742341": {
+      "turn": 3,
+      "lastMessage": "The Expansion one.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Updating Acme Logistics – Expansion: amount → $33,000.00."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_34331727c2d65b6bb2ce3462",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:7⟧",
+              "patch": {
+                "amountCents": 3300000
+              }
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4156,
+          "outputTokens": 47,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 638,
+        "firstTokenMs": 262,
+        "provider": "fake"
+      }
+    },
+    "af42a2f070398e4bd0c5c976e745df8a0d04fbbe1d1635e125f8b8e477ec27f0": {
+      "turn": 4,
+      "lastMessage": "tool_result(toolu_34331727c2d65b6bb2ce3462)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Updated Acme Logistics – Expansion: amount → $33,000.00."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4538,
+          "outputTokens": 14,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 472,
+        "firstTokenMs": 256,
+        "provider": "fake"
+      }
+    }
+  }
+}

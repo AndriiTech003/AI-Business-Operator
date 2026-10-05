@@ -1,0 +1,17 @@
+id: deal-amount-large-change
+category: single_write
+title: Amount change > 20% goes through approval
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Change the amount of the Acme Logistics – Pilot deal to $20,000.
+approvals:
+  strategy: approve_all
+assert:
+  final_state:
+    - deal('Acme Logistics – Pilot').amount_cents == 2000000
+  trajectory:
+    - required_approval('deal-amount-change')
+    - count(proposals where status == 'executed') == 1
+    - tool_called_after_approval('update_deal')
+    - no_tool_called('update_deal') before approval

@@ -1,0 +1,18 @@
+id: task-call-globex-friday
+category: single_write
+title: Task with the right date (time zone), owner and link
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Create a task to call Globex on Friday.
+assert:
+  final_state:
+    - count(tasks_created) == 1
+    - every(tasks_created, t => t.title startsWith 'Call' and t.title contains 'Globex')
+    - every(tasks_created, t => weekday(t.due_at) == 'Friday' and local_time(t.due_at) == '09:00')
+    - every(tasks_created, t => days_from_now(t.due_at) > 0 and days_from_now(t.due_at) <= 7)
+    - every(tasks_created, t => t.related_id == fixture.ids.company_globex and t.assignee_email == 'maria@demo.dev')
+    - count(emails) == 0
+  trajectory:
+    - tool_called('search_records')
+    - count(proposals) == 0

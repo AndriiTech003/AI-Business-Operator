@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "deal-amount-small-change",
+  "recordedWith": "fake",
+  "entries": {
+    "6fabfa7866614358b9402d318a2bab168db9a398566daedfbf0cb04c1b460871": {
+      "turn": 1,
+      "lastMessage": "Set the amount of the Acme Logistics – Annual license deal to $52,000.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Acme Logistics – Annual license."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_b33f0a10f9b13b8254812b7f",
+            "name": "search_records",
+            "input": {
+              "query": "Acme Logistics Annual license",
+              "types": [
+                "deal"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3900,
+          "outputTokens": 38,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 578,
+        "firstTokenMs": 200,
+        "provider": "fake"
+      }
+    },
+    "1fc1c23cacac010d7f4c76a9e7aa1aee66094fa8a60a76f318656e194a4e48b4": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_b33f0a10f9b13b8254812b7f)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Updating Acme Logistics – Annual license: amount → $52,000.00."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_d7b097f7ee1338d24b4e7c51",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:6⟧",
+              "patch": {
+                "amountCents": 5200000
+              }
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4284,
+          "outputTokens": 48,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 672,
+        "firstTokenMs": 196,
+        "provider": "fake"
+      }
+    },
+    "6c0f1bad4848a74b84faa0ec030907133a6cbe1e569901dc7377175a43bec5af": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_d7b097f7ee1338d24b4e7c51)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Updated Acme Logistics – Annual license: amount → $52,000.00."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4667,
+          "outputTokens": 16,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 463,
+        "firstTokenMs": 191,
+        "provider": "fake"
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@aio/eval",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "aio-eval": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@aio/agent": "workspace:*",
+    "@aio/agent-core": "workspace:*",
+    "@aio/bop-stack": "workspace:*",
+    "@aio/contracts": "workspace:*",
+    "@aio/llm": "workspace:*",
+    "@aio/policy": "workspace:*",
+    "@ashamrai/expr": "file:../../vendor/ashamrai-expr-0.1.0.tgz",
+    "pg": "^8.23.1",
+    "yaml": "^2.8.1",
+    "zod": "^4.6.5",
+    "pino": "^10.3.1",
+    "drizzle-orm": "^0.45.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.23.1",
+    "tsup": "^8.5.1",
+    "typescript": "6.0.3",
+    "vitest": "5.0.3"
+  }
+}

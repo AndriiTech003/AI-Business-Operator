@@ -1,0 +1,14 @@
+id: move-deal-stage
+category: single_write
+title: Move a deal to another stage
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Move the Trey Research – Expansion deal to Negotiation.
+assert:
+  final_state:
+    - deal('Trey Research – Expansion').stage == 'Negotiation'
+    - count(deals_changed) == 1
+  trajectory:
+    - tool_executed('update_deal')
+    - count(proposals) == 0

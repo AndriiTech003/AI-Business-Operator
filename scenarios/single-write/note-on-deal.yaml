@@ -1,0 +1,13 @@
+id: note-on-deal
+category: single_write
+title: Note on the right deal
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: 'Add a note to the Margie Travel – Annual license deal: the customer asked for a three-year quote.'
+assert:
+  final_state:
+    - count(notes_added) == 1
+    - every(notes_added, n => n.subject_id == fixture.ids.deal_margie_annual and n.body contains 'three-year quote' and n.actor_type == 'agent')
+  trajectory:
+    - count(proposals) == 0

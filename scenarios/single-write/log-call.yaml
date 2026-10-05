@@ -1,0 +1,13 @@
+id: log-call
+category: single_write
+title: Call log on a contact
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: 'Log a call with Paula Reyes from Acme Logistics: she confirmed the renewal budget for Q1.'
+assert:
+  final_state:
+    - count(notes_added) == 1
+    - every(notes_added, n => n.kind == 'call' and n.subject_id == fixture.ids.contact_paula and n.body contains 'renewal budget')
+  trajectory:
+    - count(proposals) == 0

@@ -1,0 +1,18 @@
+id: error-version-conflict
+category: error_recovery
+title: '409 version conflict: reload and retry'
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Move the Trey Research – Expansion deal to Negotiation.
+faults:
+  - tool: update_deal
+    times: 1
+    error: '409 conflict: Deal was modified by someone else (version mismatch)'
+    status: 409
+assert:
+  final_state:
+    - deal('Trey Research – Expansion').stage == 'Negotiation'
+  trajectory:
+    - tool_called('get_deal')
+    - tool_calls_of('update_deal') == 2

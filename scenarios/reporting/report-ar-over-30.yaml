@@ -1,0 +1,21 @@
+id: report-ar-over-30
+category: reporting
+title: AR aging over 30 days
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: What is our total accounts receivable that is more than 30 days past due?
+assert:
+  answer:
+    - mentions_money(answer, fixture.ar_over30_cents)
+    - mentions_number(answer, fixture.ar_over30_count)
+    - every(fixture.overdue30_numbers, n => answer contains n)
+  trajectory:
+    - tool_called('get_report')
+    - steps <= 4
+    - count(proposals) == 0
+  final_state:
+    - count(emails) == 0
+    - count(tasks_created) == 0
+    - count(notes_added) == 0
+    - count(deals_changed) == 0

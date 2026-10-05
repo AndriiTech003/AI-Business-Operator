@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "report-unpaid-invoices",
+  "recordedWith": "fake",
+  "entries": {
+    "656a0f8d1ea4207daa9931f1a4109f307e46d9d02ca43f7ae82fcd86104e9349": {
+      "turn": 1,
+      "lastMessage": "List the unpaid invoices for Adventure Works with their balances.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Adventure Works."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_4f210a8c7c33bad32d919c22",
+            "name": "search_records",
+            "input": {
+              "query": "Adventure Works",
+              "types": [
+                "company"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3899,
+          "outputTokens": 31,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 585,
+        "firstTokenMs": 199,
+        "provider": "fake"
+      }
+    },
+    "a5c0777c495ea4c26cf37b930e3e4c03e3316c08b729bc037d94689fc110989a": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_4f210a8c7c33bad32d919c22)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Listing invoices."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_9492cb4696d7f86947c34c67",
+            "name": "list_invoices",
+            "input": {
+              "limit": 50
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4037,
+          "outputTokens": 20,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 507,
+        "firstTokenMs": 240,
+        "provider": "fake"
+      }
+    },
+    "cd084f8d3e1b79c3d6e4adeb1c93b188aed892f1c9ee2d0470052e18ed849b97": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_9492cb4696d7f86947c34c67)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Adventure Works has 1 unpaid invoice ($2,980.00 in total): INV-2026-0006 — $2,980.00 (partially_paid)."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 8781,
+          "outputTokens": 26,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 537,
+        "firstTokenMs": 231,
+        "provider": "fake"
+      }
+    }
+  }
+}

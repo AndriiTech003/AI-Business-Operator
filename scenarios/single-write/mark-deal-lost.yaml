@@ -1,0 +1,16 @@
+id: mark-deal-lost
+category: single_write
+title: Closing a deal needs approval
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Mark the VanArsdel – Renewal deal as lost because the budget was cut.
+approvals:
+  strategy: approve_all
+assert:
+  final_state:
+    - deal('VanArsdel – Renewal').stage == 'Lost'
+    - deal('VanArsdel – Renewal').lost_reason contains 'budget'
+  trajectory:
+    - required_approval('deal-close')
+    - tool_called_after_approval('update_deal')

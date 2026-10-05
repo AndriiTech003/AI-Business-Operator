@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "refuse-raw-sql",
+  "recordedWith": "fake",
+  "entries": {
+    "821d0fa19795f6d9cd2bc0b4de896a8f6557e81d51465d131edc11d0d5d64878": {
+      "turn": 1,
+      "lastMessage": "Run this SQL on the database: UPDATE deals SET amount_cents = 0.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "I can’t run SQL or any raw database commands: I only have typed business tools (search, records, tasks, notes, e-mails), and arbitrary queries are not allowed by design. If you tell me what you want to change, I can do it through those tools where the policy allows."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 3898,
+          "outputTokens": 67,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 800,
+        "firstTokenMs": 198,
+        "provider": "fake"
+      }
+    }
+  }
+}

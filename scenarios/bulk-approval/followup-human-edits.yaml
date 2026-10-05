@@ -1,0 +1,21 @@
+id: followup-human-edits
+category: bulk_with_approval
+title: Human edits one e-mail before approving
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Find leads we haven't contacted in over 7 days and prepare follow-up emails.
+approvals:
+  strategy: edit
+  reject_where: "'tom@globex.test' in args.to"
+  edit_where: startsWith(args.to[0], 'hannah.weber')
+  edit:
+    body_append: P.S. I will also bring the updated price list to our call.
+assert:
+  final_state:
+    - count(emails_sent) == 6
+    - exists(emails_sent, e => e.to startsWith 'hannah.weber' and e.body contains 'updated price list')
+    - none(emails_sent, e => e.to == 'tom@globex.test')
+  trajectory:
+    - count(proposals where edited) == 1
+    - count(proposals where status == 'executed') == 6

@@ -1,0 +1,133 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "error-persistent-outage",
+  "recordedWith": "fake",
+  "entries": {
+    "18fa7e6ccbfaa1ec7c5a417211ce141c5659a9d71d4baf0fd5b728b777adb15e": {
+      "turn": 1,
+      "lastMessage": "How many overdue invoices does Acme Logistics have, and what is the total outstanding amount?",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Acme Logistics."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_3052ce252e3fbd2b1d860a54",
+            "name": "search_records",
+            "input": {
+              "query": "Acme Logistics",
+              "types": [
+                "company"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3906,
+          "outputTokens": 31,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 542,
+        "firstTokenMs": 206,
+        "provider": "fake"
+      }
+    },
+    "ba40c13b9c89deb6081f5a99b5909583aa4d6bbf18daf9e56af019a9fe561e42": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_3052ce252e3fbd2b1d860a54)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "The service returned an error; retrying."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_0a77b19bab78f50ac98c7ae6",
+            "name": "search_records",
+            "input": {
+              "query": "Acme Logistics",
+              "types": [
+                "company"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3987,
+          "outputTokens": 34,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 591,
+        "firstTokenMs": 190,
+        "provider": "fake"
+      }
+    },
+    "6976186bb5eb1420874891b03fe1920a8f26d79c2dc538a9eb2b72e34caed3cf": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_0a77b19bab78f50ac98c7ae6)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Retrying once more."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_c8997e40149ccfbd867cf0be",
+            "name": "search_records",
+            "input": {
+              "query": "Acme Logistics",
+              "types": [
+                "company"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4071,
+          "outputTokens": 29,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 545,
+        "firstTokenMs": 274,
+        "provider": "fake"
+      }
+    },
+    "f04c77851f51655f07fe3ea4d03d5d8a65b32312d65093ccf31ecdc23d158a8d": {
+      "turn": 4,
+      "lastMessage": "tool_result(toolu_c8997e40149ccfbd867cf0be)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "I could not search the CRM: 503 service_unavailable: Search is temporarily unavailable (simulated)."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4150,
+          "outputTokens": 25,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 500,
+        "firstTokenMs": 256,
+        "provider": "fake"
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "move-deal-stage",
+  "recordedWith": "fake",
+  "entries": {
+    "45e5f53d6a92679e4f7d6a6bd6dcb87f13d141e5f066618d7025b3b04e52c491": {
+      "turn": 1,
+      "lastMessage": "Move the Trey Research – Expansion deal to Negotiation.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Trey Research – Expansion."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_621777fa5077006350db8f3a",
+            "name": "search_records",
+            "input": {
+              "query": "Trey Research Expansion",
+              "types": [
+                "deal"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3896,
+          "outputTokens": 35,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 606,
+        "firstTokenMs": 196,
+        "provider": "fake"
+      }
+    },
+    "bf53fb01a6e5219fb328dde664e996ab9dde294f76a16d88a7b4383977f46698": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_621777fa5077006350db8f3a)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Updating Trey Research – Expansion: stage → Negotiation."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_baa4390e9813fe07f8072a3c",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:6⟧",
+              "patch": {
+                "stage": "Negotiation"
+              }
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4091,
+          "outputTokens": 46,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 667,
+        "firstTokenMs": 197,
+        "provider": "fake"
+      }
+    },
+    "f52f5e5fc77c4f1e5310b826c811592b54df9e30331dccd2a2eb3bb014348ef5": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_baa4390e9813fe07f8072a3c)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Updated Trey Research – Expansion: stage → Negotiation."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4503,
+          "outputTokens": 14,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 437,
+        "firstTokenMs": 221,
+        "provider": "fake"
+      }
+    }
+  }
+}

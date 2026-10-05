@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "report-deal-stage",
+  "recordedWith": "fake",
+  "entries": {
+    "6fea6cb8b7b8c1a29c8f6be6c87a6a8e82312258cb473d55fbc059b2d00b6ed4": {
+      "turn": 1,
+      "lastMessage": "Which stage is the Trey Research – Expansion deal in, and when is it expected to close?",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Trey Research – Expansion."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_621777fa5077006350db8f3a",
+            "name": "search_records",
+            "input": {
+              "query": "Trey Research Expansion",
+              "types": [
+                "deal"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3904,
+          "outputTokens": 35,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 564,
+        "firstTokenMs": 204,
+        "provider": "fake"
+      }
+    },
+    "9179bac4560dad9b1cbf3cf32e90c66827358df066e29fe5d291a29be0397628": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_621777fa5077006350db8f3a)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Loading Trey Research – Expansion."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_c046edd7e852f82fa5bbbf2c",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:6⟧"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4099,
+          "outputTokens": 33,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 597,
+        "firstTokenMs": 205,
+        "provider": "fake"
+      }
+    },
+    "f5d2484e637ad6d43394a562421dffceadb8aa748c6f224ac6681be6ec60c0df": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_c046edd7e852f82fa5bbbf2c)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Trey Research – Expansion is in the Lead stage and is expected to close on ⟦reld:58⟧."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4548,
+          "outputTokens": 22,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 530,
+        "firstTokenMs": 266,
+        "provider": "fake"
+      }
+    }
+  }
+}

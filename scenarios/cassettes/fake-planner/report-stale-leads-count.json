@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "report-stale-leads-count",
+  "recordedWith": "fake",
+  "entries": {
+    "65120cb194a91cb64fee645e91527e0930bcd6c390db6131b60952db692a5cdd": {
+      "turn": 1,
+      "lastMessage": "How many leads have not been contacted in more than 7 days?",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Counting stale leads."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_69214ece53a1f662e1eae383",
+            "name": "list_contacts",
+            "input": {
+              "status": "lead",
+              "lastContactedBefore": "⟦rel:-604800000⟧",
+              "limit": 50
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3897,
+          "outputTokens": 38,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 625,
+        "firstTokenMs": 197,
+        "provider": "fake"
+      }
+    },
+    "98d2c666fc90fc240968217bdabe23e2a00208d4311ac55b5df82f84645d1033": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_69214ece53a1f662e1eae383)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "7 leads have not been contacted in more than 7 days: Tom Becker (Globex Corporation), Jonas Berg (Wide World Importers), Daniel Kim (Margie Travel), Lucas Martin (Woodgrove Bank), Emma Novak (Northwind Traders), Sofia Rossi (Fourth Coffee) and Hannah Weber (Wide World Importers)."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 5303,
+          "outputTokens": 70,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 773,
+        "firstTokenMs": 245,
+        "provider": "fake"
+      }
+    }
+  }
+}

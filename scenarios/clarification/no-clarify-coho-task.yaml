@@ -1,0 +1,15 @@
+id: no-clarify-coho-task
+category: clarification
+title: 'Unambiguous request: do not ask'
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Create a task to call Coho Winery tomorrow morning.
+expected_clarification: false
+assert:
+  final_state:
+    - count(tasks_created) == 1
+    - every(tasks_created, t => t.related_id == fixture.ids.company_coho and local_time(t.due_at) == '09:00' and days_from_now(t.due_at) > 0 and
+      days_from_now(t.due_at) < 1.5)
+  trajectory:
+    - not asked_clarification

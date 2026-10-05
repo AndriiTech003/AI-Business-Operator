@@ -1,0 +1,16 @@
+services:
+  bop-api:
+    image: !reset null
+    build: { context: ../05-business-operations-platform, dockerfile: apps/api/Dockerfile }
+  bop-worker:
+    image: !reset null
+    build: { context: ../05-business-operations-platform, dockerfile: apps/worker/Dockerfile }
+  bop-scheduler:
+    image: !reset null
+    build: { context: ../05-business-operations-platform, dockerfile: apps/scheduler/Dockerfile }
+  bop-mcp:
+    image: !reset null
+    build: { context: ../05-business-operations-platform, dockerfile: apps/ops-mcp/Dockerfile }
+  bop-web:
+    image: !reset null
+    build: { context: ../05-business-operations-platform, dockerfile: apps/web/Dockerfile }

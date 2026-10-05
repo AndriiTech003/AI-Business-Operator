@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "error-retry-500",
+  "recordedWith": "fake",
+  "entries": {
+    "18fa7e6ccbfaa1ec7c5a417211ce141c5659a9d71d4baf0fd5b728b777adb15e": {
+      "turn": 1,
+      "lastMessage": "How many overdue invoices does Acme Logistics have, and what is the total outstanding amount?",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Acme Logistics."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_3052ce252e3fbd2b1d860a54",
+            "name": "search_records",
+            "input": {
+              "query": "Acme Logistics",
+              "types": [
+                "company"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3906,
+          "outputTokens": 31,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 542,
+        "firstTokenMs": 206,
+        "provider": "fake"
+      }
+    },
+    "e8fd1491ce9088a4d6e8b5376ce1226c968270b79d8769bd47fcea3ba616e02e": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_3052ce252e3fbd2b1d860a54)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Listing overdue invoices."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_a87e16426bd6589e40051df2",
+            "name": "list_invoices",
+            "input": {
+              "overdueDays": 0,
+              "limit": 50
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4043,
+          "outputTokens": 26,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 549,
+        "firstTokenMs": 246,
+        "provider": "fake"
+      }
+    },
+    "30b800b6e75312e7032786b7408942f690002ac66d44ebaaea830e4a64f13c32": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_a87e16426bd6589e40051df2)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "The service returned an error; retrying."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_a685bf7f6147632a99eace27",
+            "name": "list_invoices",
+            "input": {
+              "overdueDays": 0,
+              "limit": 50
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4115,
+          "outputTokens": 29,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 539,
+        "firstTokenMs": 221,
+        "provider": "fake"
+      }
+    },
+    "7bfe181717a3fa58066152f10425869e2c7516868a773dea10e96ebab3d9d37c": {
+      "turn": 4,
+      "lastMessage": "tool_result(toolu_a685bf7f6147632a99eace27)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Acme Logistics has 2 overdue invoices with $6,300.00 outstanding in total: INV-2026-0018 ($3,450.00, due ⟦reld:-45⟧) and INV-2026-0017 ($2,850.00, due ⟦reld:-20⟧)."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 6305,
+          "outputTokens": 41,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 601,
+        "firstTokenMs": 180,
+        "provider": "fake"
+      }
+    }
+  }
+}

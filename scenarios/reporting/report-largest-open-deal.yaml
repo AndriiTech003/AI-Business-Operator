@@ -1,0 +1,20 @@
+id: report-largest-open-deal
+category: reporting
+title: Largest open deal and owner
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: What is our largest open deal and who owns it?
+assert:
+  answer:
+    - answer contains fixture.largest_open_deal_title
+    - answer contains fixture.largest_open_deal_owner
+    - mentions_money(answer, fixture.largest_open_deal_cents)
+  trajectory:
+    - tool_called('list_deals')
+    - count(proposals) == 0
+  final_state:
+    - count(emails) == 0
+    - count(tasks_created) == 0
+    - count(notes_added) == 0
+    - count(deals_changed) == 0

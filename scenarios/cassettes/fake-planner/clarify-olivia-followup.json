@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "clarify-olivia-followup",
+  "recordedWith": "fake",
+  "entries": {
+    "715e91989bbc4d464b1bdb1c30ad01b672b6c41c7504e17fe6f49cc60c679360": {
+      "turn": 1,
+      "lastMessage": "Send a follow-up email to Olivia Smith.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Olivia Smith."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_93d82a51d83961816383b1ce",
+            "name": "search_records",
+            "input": {
+              "query": "Olivia Smith",
+              "types": [
+                "contact"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3892,
+          "outputTokens": 29,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 566,
+        "firstTokenMs": 192,
+        "provider": "fake"
+      }
+    },
+    "c214a900145d662ea61d7c76afb0bbbc230ae090ff799cd0051306b455aaeae8": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_93d82a51d83961816383b1ce)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "I found 2 contacts matching \"Olivia Smith\":\n- Olivia Smith (olivia.smith0@northwind.example)\n- Olivia Smith (olivia.smith36@margie.example)\nWhich one do you mean?"
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4094,
+          "outputTokens": 41,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 640,
+        "firstTokenMs": 200,
+        "provider": "fake"
+      }
+    }
+  }
+}

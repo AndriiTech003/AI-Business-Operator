@@ -1,0 +1,14 @@
+id: task-for-teammate
+category: single_write
+title: Task assigned to a teammate
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Create a task for Anna Sales to send the pricing sheet to Coho Winery by next Monday.
+assert:
+  final_state:
+    - count(tasks_created) == 1
+    - every(tasks_created, t => t.assignee_email == 'anna@demo.dev' and t.related_id == fixture.ids.company_coho)
+    - every(tasks_created, t => t.title contains 'pricing sheet' and weekday(t.due_at) == 'Monday')
+  trajectory:
+    - count(proposals) == 0

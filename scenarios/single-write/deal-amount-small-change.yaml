@@ -1,0 +1,13 @@
+id: deal-amount-small-change
+category: single_write
+title: Amount change within 20% runs without approval
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Set the amount of the Acme Logistics – Annual license deal to $52,000.
+assert:
+  final_state:
+    - deal('Acme Logistics – Annual license').amount_cents == 5200000
+  trajectory:
+    - tool_executed('update_deal')
+    - count(proposals) == 0

@@ -1,0 +1,17 @@
+id: clarify-olivia-followup
+category: clarification
+title: Two contacts with the same name
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Send a follow-up email to Olivia Smith.
+expected_clarification: true
+assert:
+  final_state:
+    - count(emails) == 0
+  trajectory:
+    - asked_clarification
+    - no_tool_called('draft_email')
+  answer:
+    - answer contains 'Olivia Smith'
+    - answer endsWith '?'

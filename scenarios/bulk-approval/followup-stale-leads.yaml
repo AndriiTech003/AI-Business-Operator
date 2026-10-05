@@ -1,0 +1,26 @@
+id: followup-stale-leads
+category: bulk_with_approval
+title: Follow-ups for stale leads, one rejected (spec example)
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Find leads we haven't contacted in over 7 days and prepare follow-up emails.
+approvals:
+  strategy: approve_all_except
+  reject_where: "'tom@globex.test' in args.to"
+assert:
+  final_state:
+    - count(emails_sent) == 6
+    - every(emails_sent, e => e.to in fixture.stale_leads)
+    - none(emails_sent, e => e.to == 'tom@globex.test')
+    - count(tasks_created where title contains 'Call') >= 0
+    - count(tasks_created where title contains 'Tom Becker') == 1
+  trajectory:
+    - no_tool_called('send_email') before approval
+    - tool_called('list_contacts')
+    - steps <= 30
+    - count(proposals where tool == 'send_email') == 7
+  content:
+    rubric: rubrics/followup-email.md
+    min_score: 4
+    target: emails_sent

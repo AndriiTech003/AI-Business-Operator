@@ -1,0 +1,164 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "error-version-conflict",
+  "recordedWith": "fake",
+  "entries": {
+    "45e5f53d6a92679e4f7d6a6bd6dcb87f13d141e5f066618d7025b3b04e52c491": {
+      "turn": 1,
+      "lastMessage": "Move the Trey Research – Expansion deal to Negotiation.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Trey Research – Expansion."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_621777fa5077006350db8f3a",
+            "name": "search_records",
+            "input": {
+              "query": "Trey Research Expansion",
+              "types": [
+                "deal"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3896,
+          "outputTokens": 35,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 606,
+        "firstTokenMs": 196,
+        "provider": "fake"
+      }
+    },
+    "bf53fb01a6e5219fb328dde664e996ab9dde294f76a16d88a7b4383977f46698": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_621777fa5077006350db8f3a)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Updating Trey Research – Expansion: stage → Negotiation."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_baa4390e9813fe07f8072a3c",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:6⟧",
+              "patch": {
+                "stage": "Negotiation"
+              }
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4091,
+          "outputTokens": 46,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 667,
+        "firstTokenMs": 197,
+        "provider": "fake"
+      }
+    },
+    "75618a3ffcd9b169b158bcf5089ffb268e247a03b5ae2852107472fbceffde2a": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_baa4390e9813fe07f8072a3c)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "The deal changed in the meantime; reloading it before retrying."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_2efac9809e12361b56624f37",
+            "name": "get_deal",
+            "input": {
+              "id": "⟦id:6⟧"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4184,
+          "outputTokens": 40,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 624,
+        "firstTokenMs": 193,
+        "provider": "fake"
+      }
+    },
+    "806f855e1489aac8ea56b56f05d71c4ddc50de69ecf7f29647132f047f88e2ab": {
+      "turn": 4,
+      "lastMessage": "tool_result(toolu_2efac9809e12361b56624f37)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Retrying the update."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_01ba6281d4d8a538465363b6",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:6⟧",
+              "patch": {
+                "stage": "Negotiation"
+              }
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4640,
+          "outputTokens": 37,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 612,
+        "firstTokenMs": 261,
+        "provider": "fake"
+      }
+    },
+    "3e8cf5f6aeb6d6bdbfcbb5f72f028f12fba625f0bf6f77db7d4adf161629da08": {
+      "turn": 5,
+      "lastMessage": "tool_result(toolu_01ba6281d4d8a538465363b6)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Updated Trey Research – Expansion: stage → Negotiation."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 5043,
+          "outputTokens": 14,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 477,
+        "firstTokenMs": 276,
+        "provider": "fake"
+      }
+    }
+  }
+}

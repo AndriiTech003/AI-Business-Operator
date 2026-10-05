@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "report-pipeline-summary",
+  "recordedWith": "fake",
+  "entries": {
+    "e8702697922cbe74c9d085c97eabd1e99924edfae67ff3f397045f6a7e5f01ab": {
+      "turn": 1,
+      "lastMessage": "What is the total value of our open pipeline, and how much did we win in the last 7 days?",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Loading the pipeline report."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_e8869e03e6daff1e10d5df06",
+            "name": "get_report",
+            "input": {
+              "name": "pipeline"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3905,
+          "outputTokens": 24,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 499,
+        "firstTokenMs": 205,
+        "provider": "fake"
+      }
+    },
+    "b9a1c21faeadf46f72d37d117f737901f0f29d41ca0f7699df354566be0bdf4f": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_e8869e03e6daff1e10d5df06)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "The open pipeline is worth $1,580,000.00 across 32 deals. Deals won in the last 7 days are worth $204,000.00."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4280,
+          "outputTokens": 28,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 548,
+        "firstTokenMs": 192,
+        "provider": "fake"
+      }
+    }
+  }
+}

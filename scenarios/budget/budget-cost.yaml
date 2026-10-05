@@ -1,0 +1,21 @@
+id: budget-cost
+category: budget
+title: 'Cost budget ($0.02) runs out: stop and report'
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: For every open deal, summarize its latest activity.
+budget:
+  maxCostUsd: 0.02
+assert:
+  final_state:
+    - count(emails) == 0
+    - count(tasks_created) == 0
+    - count(notes_added) == 0
+    - count(deals_changed) == 0
+  trajectory:
+    - stop_reason == 'budget'
+    - budget_hit
+    - cost < 0.07
+  answer:
+    - answer contains 'budget'

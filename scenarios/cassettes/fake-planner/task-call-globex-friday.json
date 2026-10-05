@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "task-call-globex-friday",
+  "recordedWith": "fake",
+  "entries": {
+    "b28fe71cd44cb5c9e7bf8a434d3d34922fda093a4ce75f8cd2f24f6441cbcf01": {
+      "turn": 1,
+      "lastMessage": "Create a task to call Globex on Friday.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Globex."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_04b4566a16b293ac62648bd1",
+            "name": "search_records",
+            "input": {
+              "query": "Globex",
+              "types": [
+                "company"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3892,
+          "outputTokens": 27,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 554,
+        "firstTokenMs": 192,
+        "provider": "fake"
+      }
+    },
+    "ebaba44d5b3ee01704f498daf176bab8a534cd02ba3742ba225338dbb0d6862d": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_04b4566a16b293ac62648bd1)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Creating the task \"Call Globex Corporation\"."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_e441a588437efdc7e8d66627",
+            "name": "create_task",
+            "input": {
+              "title": "Call Globex Corporation",
+              "assigneeId": "⟦id:0⟧",
+              "priority": 2,
+              "dueAt": "⟦rel:369344934⟧",
+              "relatedType": "company",
+              "relatedId": "⟦id:6⟧"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 4023,
+          "outputTokens": 76,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 829,
+        "firstTokenMs": 226,
+        "provider": "fake"
+      }
+    },
+    "f58055d0120e329fed9a58cae888f2a536950a3b41cc1e9c6b246c6bf22092f4": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_e441a588437efdc7e8d66627)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Created the task \"Call Globex Corporation\" for Maria Lopez due ⟦reld:4⟧ 09:00 (Europe/Berlin), linked to Globex Corporation."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4325,
+          "outputTokens": 32,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 567,
+        "firstTokenMs": 237,
+        "provider": "fake"
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "report-largest-open-deal",
+  "recordedWith": "fake",
+  "entries": {
+    "d173781efa2a162f47a6c0cbadf46ff4b365a50d50e659bf4f7bd8ed1599a7b0": {
+      "turn": 1,
+      "lastMessage": "What is our largest open deal and who owns it?",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking for the largest open deal."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_1ab1931cd4e45ea5003adb45",
+            "name": "list_deals",
+            "input": {
+              "open": true,
+              "limit": 5
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3894,
+          "outputTokens": 27,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 556,
+        "firstTokenMs": 194,
+        "provider": "fake"
+      }
+    },
+    "f55e019911d32e6f20bedf38042a37116e9d5100ea61da37ce39974037a7d92e": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_1ab1931cd4e45ea5003adb45)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "The largest open deal is Tailspin Toys – Renewal at $96,000.00 (stage Proposal), owned by Max Manager."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 5329,
+          "outputTokens": 26,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 535,
+        "firstTokenMs": 271,
+        "provider": "fake"
+      }
+    }
+  }
+}

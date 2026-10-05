@@ -1,0 +1,198 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "reassign-departing-owner",
+  "recordedWith": "fake",
+  "entries": {
+    "2ff698f724d87eaeeb2aaf87430d2178ab5fae707e9f6e8c6d9b2f623a3175f3": {
+      "turn": 1,
+      "lastMessage": "Ben Sales is leaving the company. Reassign all of his open deals to Anna Sales.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Listing Ben Sales's open deals."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_b640e8f562135196af431151",
+            "name": "list_deals",
+            "input": {
+              "ownerId": "⟦id:2⟧",
+              "open": true,
+              "limit": 50
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3921,
+          "outputTokens": 39,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 605,
+        "firstTokenMs": 221,
+        "provider": "fake"
+      }
+    },
+    "d34ecb71421408d84335fd2370f8c5711fa41ebcc653f7e5a9da04c1f1cc5ea4": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_b640e8f562135196af431151)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Reassigning 8 deals from Ben Sales to Anna Sales."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_e2ceb8e973d0824fdaacf440",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:6⟧",
+              "patch": {
+                "ownerId": "⟦id:1⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_505702563494817de16ed672",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:11⟧",
+              "patch": {
+                "ownerId": "⟦id:1⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_c4d508d6ff9162b211706181",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:14⟧",
+              "patch": {
+                "ownerId": "⟦id:1⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_37738ce1af49492b671deebb",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:18⟧",
+              "patch": {
+                "ownerId": "⟦id:1⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_098d629b063c63f63ebebc5b",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:21⟧",
+              "patch": {
+                "ownerId": "⟦id:1⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_235261c2d9249f06562c4f1f",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:24⟧",
+              "patch": {
+                "ownerId": "⟦id:1⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_e39825a080ad2e80dc31e28e",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:27⟧",
+              "patch": {
+                "ownerId": "⟦id:1⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_d31af8aa7cd7772d8720fd06",
+            "name": "update_deal",
+            "input": {
+              "id": "⟦id:30⟧",
+              "patch": {
+                "ownerId": "⟦id:1⟧"
+              }
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 6139,
+          "outputTokens": 317,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 2291,
+        "firstTokenMs": 208,
+        "provider": "fake"
+      }
+    },
+    "7caca35c6db6b2185fd288026e8532e30f76eecb015e1d7a51985602c4721f75": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_e2ceb8e973d0824fdaacf440), tool_result(toolu_505702563494817de16ed672), tool_result(toolu_c4d508d6ff9162b211706181), tool_result(toolu_37738ce",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Ben Sales owns 8 open deals.\n8 reassignments need approval.\nWaiting for approval: update_deal ×8 (rules: owner-change)."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 7179,
+          "outputTokens": 30,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 559,
+        "firstTokenMs": 181,
+        "provider": "fake"
+      }
+    },
+    "80f5577f2db55736f9257efc9b28904bba429c9d64dcab1de40db3146de81787": {
+      "turn": 4,
+      "lastMessage": "<approval_results batch=\"03d2c9df-0d82-49e4-be2c-7890617e3c8f\" at=\"2026-10-05T00:24:15.066Z\">\n{\"executed\":8,\"rejected\":0,\"expired\":0,\"failed\":0,\"edited\":0,\"outc",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Ben Sales owns 8 open deals.\nReassigned to Anna Sales: Woodgrove Bank – Annual license, Blue Yonder Airlines – Expansion, Fabrikam Inc – Expansion, Wide World Importers – Annual license, VanArsdel – Renewal, Contoso Ltd – Pilot, Coho Winery – Renewal and Graphic Design Institute – Pilot."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 10428,
+          "outputTokens": 72,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 810,
+        "firstTokenMs": 229,
+        "provider": "fake"
+      }
+    }
+  }
+}

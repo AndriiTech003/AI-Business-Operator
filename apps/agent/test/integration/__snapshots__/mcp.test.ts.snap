@@ -1,0 +1,214 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ops-mcp contract > exposes the expected tools, risks and input schemas 1`] = `
+[
+  {
+    "name": "search_records",
+    "properties": [
+      "query",
+      "types",
+    ],
+    "required": [
+      "query",
+    ],
+    "risk": "read",
+  },
+  {
+    "name": "get_company",
+    "properties": [
+      "id",
+    ],
+    "required": [
+      "id",
+    ],
+    "risk": "read",
+  },
+  {
+    "name": "get_contact",
+    "properties": [
+      "id",
+    ],
+    "required": [
+      "id",
+    ],
+    "risk": "read",
+  },
+  {
+    "name": "get_deal",
+    "properties": [
+      "id",
+    ],
+    "required": [
+      "id",
+    ],
+    "risk": "read",
+  },
+  {
+    "name": "get_invoice",
+    "properties": [
+      "id",
+    ],
+    "required": [
+      "id",
+    ],
+    "risk": "read",
+  },
+  {
+    "name": "list_contacts",
+    "properties": [
+      "cursor",
+      "custom",
+      "lastContactedBefore",
+      "limit",
+      "ownerId",
+      "query",
+      "status",
+      "tags",
+    ],
+    "required": [],
+    "risk": "read",
+  },
+  {
+    "name": "list_deals",
+    "properties": [
+      "amountMaxCents",
+      "amountMinCents",
+      "cursor",
+      "limit",
+      "open",
+      "ownerId",
+      "stage",
+      "stageChangedBefore",
+    ],
+    "required": [],
+    "risk": "read",
+  },
+  {
+    "name": "list_invoices",
+    "properties": [
+      "amountMaxCents",
+      "amountMinCents",
+      "cursor",
+      "dueBefore",
+      "limit",
+      "overdueDays",
+      "status",
+    ],
+    "required": [],
+    "risk": "read",
+  },
+  {
+    "name": "get_report",
+    "properties": [
+      "name",
+      "params",
+    ],
+    "required": [
+      "name",
+    ],
+    "risk": "read",
+  },
+  {
+    "name": "create_task",
+    "properties": [
+      "assigneeId",
+      "description",
+      "dryRun",
+      "dueAt",
+      "idempotencyKey",
+      "priority",
+      "relatedId",
+      "relatedType",
+      "title",
+    ],
+    "required": [
+      "title",
+    ],
+    "risk": "write_reversible",
+  },
+  {
+    "name": "add_note",
+    "properties": [
+      "body",
+      "dryRun",
+      "idempotencyKey",
+      "kind",
+      "subject",
+    ],
+    "required": [
+      "body",
+      "subject",
+    ],
+    "risk": "write_reversible",
+  },
+  {
+    "name": "update_deal",
+    "properties": [
+      "dryRun",
+      "id",
+      "idempotencyKey",
+      "patch",
+    ],
+    "required": [
+      "id",
+      "patch",
+    ],
+    "risk": "write_reversible",
+  },
+  {
+    "name": "draft_email",
+    "properties": [
+      "body",
+      "dryRun",
+      "idempotencyKey",
+      "relatedTo",
+      "subject",
+      "to",
+    ],
+    "required": [
+      "body",
+      "subject",
+      "to",
+    ],
+    "risk": "write_reversible",
+  },
+  {
+    "name": "send_email",
+    "properties": [
+      "draftId",
+      "dryRun",
+      "idempotencyKey",
+    ],
+    "required": [
+      "draftId",
+    ],
+    "risk": "external",
+  },
+  {
+    "name": "send_invoice",
+    "properties": [
+      "dryRun",
+      "id",
+      "idempotencyKey",
+      "to",
+    ],
+    "required": [
+      "id",
+    ],
+    "risk": "external",
+  },
+  {
+    "name": "void_invoice",
+    "properties": [
+      "dryRun",
+      "id",
+      "idempotencyKey",
+      "reason",
+    ],
+    "required": [
+      "id",
+    ],
+    "risk": "irreversible",
+  },
+]
+`;

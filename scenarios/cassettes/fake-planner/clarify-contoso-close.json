@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "clarify-contoso-close",
+  "recordedWith": "fake",
+  "entries": {
+    "eaa676c550500071fee3cae72a8ad43963170cb8d76eb472f1430396fa381ef8": {
+      "turn": 1,
+      "lastMessage": "Close the Contoso deal as won.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Looking up Contoso."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_c7cc49a9b9c93c08a98ae9c3",
+            "name": "search_records",
+            "input": {
+              "query": "Contoso",
+              "types": [
+                "deal"
+              ]
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3890,
+          "outputTokens": 26,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 546,
+        "firstTokenMs": 190,
+        "provider": "fake"
+      }
+    },
+    "613ead233e2f284475e2345c207ea4db4492ac682fca9b3ddf8b59b1b664513c": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_c7cc49a9b9c93c08a98ae9c3)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "I found 2 deals matching \"Contoso\":\n- Contoso Ltd – Pilot (22000.00 USD)\n- Contoso Ltd – Pilot (42000.00 USD)\nWhich one do you mean?"
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 4039,
+          "outputTokens": 33,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 587,
+        "firstTokenMs": 242,
+        "provider": "fake"
+      }
+    }
+  }
+}

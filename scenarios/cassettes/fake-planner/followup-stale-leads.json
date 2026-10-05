@@ -1,0 +1,416 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "followup-stale-leads",
+  "recordedWith": "fake",
+  "entries": {
+    "69fc9e95c77d4bd910c5610ca371cb1e6598e8c7d3ad6b839808d39335ea98cd": {
+      "turn": 1,
+      "lastMessage": "Find leads we haven't contacted in over 7 days and prepare follow-up emails.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Finding leads not contacted since ⟦reld:-7⟧."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_69214ece53a1f662e1eae383",
+            "name": "list_contacts",
+            "input": {
+              "status": "lead",
+              "lastContactedBefore": "⟦rel:-604800000⟧",
+              "limit": 50
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 3901,
+          "outputTokens": 44,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 615,
+        "firstTokenMs": 201,
+        "provider": "fake"
+      }
+    },
+    "2333d43759cbaec31911664534a96ce98a7e7726e3a3bf029ec71fc371da9f1c": {
+      "turn": 2,
+      "lastMessage": "tool_result(toolu_69214ece53a1f662e1eae383)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Reading the history of 7 leads."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_c32e0b672b5d8d6ab705a44e",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:6⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_a3116bf459d577882ce3bc61",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:8⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_cb35198477e2182ecc4faba8",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:10⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_eb7eec1a38b23395f53d038a",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:12⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_1436589cde445717ad98b621",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:14⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_607453e7c10a17381cae6cf4",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:16⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_ce7bbb7e6eb10ebca36b0e86",
+            "name": "get_contact",
+            "input": {
+              "id": "⟦id:18⟧"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 5313,
+          "outputTokens": 176,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 1419,
+        "firstTokenMs": 255,
+        "provider": "fake"
+      }
+    },
+    "4f2a519c6fcc879b9015996565778bf9e677661941da28ec910573e66f8b3f35": {
+      "turn": 3,
+      "lastMessage": "tool_result(toolu_c32e0b672b5d8d6ab705a44e), tool_result(toolu_a3116bf459d577882ce3bc61), tool_result(toolu_cb35198477e2182ecc4faba8), tool_result(toolu_eb7eec1",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Drafting 7 follow-up emails."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_ef144b9cc6457a9d6e4f9f47",
+            "name": "draft_email",
+            "input": {
+              "to": [
+                "tom@globex.test"
+              ],
+              "subject": "Following up – Acme Corp × Globex Corporation",
+              "body": "Hi Tom,\n\nI wanted to follow up on how Acme Corp could support Globex Corporation. We have helped teams like Globex Corporation cut the time they spend on manual follow-ups, and I would be glad to show you how that could look for you.\n\nWould you have 20 minutes next week for a short call? Just reply with a time that suits you.\n\nBest regards,\nMaria Lopez\nAcme Corp",
+              "relatedTo": {
+                "type": "contact",
+                "id": "⟦id:6⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_db04c072fde5b23380f95c8a",
+            "name": "draft_email",
+            "input": {
+              "to": [
+                "jonas.berg@wideworld.example"
+              ],
+              "subject": "Following up – Acme Corp × Wide World Importers",
+              "body": "Hi Jonas,\n\nI wanted to follow up on how Acme Corp could support Wide World Importers. We have helped teams like Wide World Importers cut the time they spend on manual follow-ups, and I would be glad to show you how that could look for you.\n\nWould you have 20 minutes next week for a short call? Just reply with a time that suits you.\n\nBest regards,\nMaria Lopez\nAcme Corp",
+              "relatedTo": {
+                "type": "contact",
+                "id": "⟦id:8⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_1744b77f165b57959f4368dc",
+            "name": "draft_email",
+            "input": {
+              "to": [
+                "daniel.kim@margie.example"
+              ],
+              "subject": "Following up – Acme Corp × Margie Travel",
+              "body": "Hi Daniel,\n\nI wanted to follow up on how Acme Corp could support Margie Travel. We have helped teams like Margie Travel cut the time they spend on manual follow-ups, and I would be glad to show you how that could look for you.\n\nWould you have 20 minutes next week for a short call? Just reply with a time that suits you.\n\nBest regards,\nMaria Lopez\nAcme Corp",
+              "relatedTo": {
+                "type": "contact",
+                "id": "⟦id:10⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_32d73dcc1f74b0442aa29a43",
+            "name": "draft_email",
+            "input": {
+              "to": [
+                "lucas.martin@woodgrove.example"
+              ],
+              "subject": "Following up – Acme Corp × Woodgrove Bank",
+              "body": "Hi Lucas,\n\nI wanted to follow up on how Acme Corp could support Woodgrove Bank. We have helped teams like Woodgrove Bank cut the time they spend on manual follow-ups, and I would be glad to show you how that could look for you.\n\nWould you have 20 minutes next week for a short call? Just reply with a time that suits you.\n\nBest regards,\nMaria Lopez\nAcme Corp",
+              "relatedTo": {
+                "type": "contact",
+                "id": "⟦id:12⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_05129d2d56f110998a69de02",
+            "name": "draft_email",
+            "input": {
+              "to": [
+                "emma.novak@northwind.example"
+              ],
+              "subject": "Following up – Acme Corp × Northwind Traders",
+              "body": "Hi Emma,\n\nI wanted to follow up on how Acme Corp could support Northwind Traders. We have helped teams like Northwind Traders cut the time they spend on manual follow-ups, and I would be glad to show you how that could look for you.\n\nWould you have 20 minutes next week for a short call? Just reply with a time that suits you.\n\nBest regards,\nMaria Lopez\nAcme Corp",
+              "relatedTo": {
+                "type": "contact",
+                "id": "⟦id:14⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_8a8fdecd10ca5f4780211400",
+            "name": "draft_email",
+            "input": {
+              "to": [
+                "sofia.rossi@fourthcoffee.example"
+              ],
+              "subject": "Following up – Acme Corp × Fourth Coffee",
+              "body": "Hi Sofia,\n\nI wanted to follow up on how Acme Corp could support Fourth Coffee. We have helped teams like Fourth Coffee cut the time they spend on manual follow-ups, and I would be glad to show you how that could look for you.\n\nWould you have 20 minutes next week for a short call? Just reply with a time that suits you.\n\nBest regards,\nMaria Lopez\nAcme Corp",
+              "relatedTo": {
+                "type": "contact",
+                "id": "⟦id:16⟧"
+              }
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_63e2240bca9e5d5e5df3c982",
+            "name": "draft_email",
+            "input": {
+              "to": [
+                "hannah.weber@wideworld.example"
+              ],
+              "subject": "Following up – Acme Corp × Wide World Importers",
+              "body": "Hi Hannah,\n\nI wanted to follow up on how Acme Corp could support Wide World Importers. We have helped teams like Wide World Importers cut the time they spend on manual follow-ups, and I would be glad to show you how that could look for you.\n\nWould you have 20 minutes next week for a short call? Just reply with a time that suits you.\n\nBest regards,\nMaria Lopez\nAcme Corp",
+              "relatedTo": {
+                "type": "contact",
+                "id": "⟦id:18⟧"
+              }
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 8450,
+          "outputTokens": 1057,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 6692,
+        "firstTokenMs": 191,
+        "provider": "fake"
+      }
+    },
+    "eae4303b18a99e10f2ea2d67b126a3a6377c03e92c21ff8c3193dd6dd4bb47ed": {
+      "turn": 4,
+      "lastMessage": "tool_result(toolu_ef144b9cc6457a9d6e4f9f47), tool_result(toolu_db04c072fde5b23380f95c8a), tool_result(toolu_1744b77f165b57959f4368dc), tool_result(toolu_32d73dc",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Sending 7 follow-up emails; the policy will route them for approval where needed."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_b063bacb162502e51a15d40d",
+            "name": "send_email",
+            "input": {
+              "draftId": "⟦id:32⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_14c03c09f838311cad689940",
+            "name": "send_email",
+            "input": {
+              "draftId": "⟦id:34⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_30d9e45aee1b9e0f7e5b8cab",
+            "name": "send_email",
+            "input": {
+              "draftId": "⟦id:35⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_803e33d17866e8f72116727a",
+            "name": "send_email",
+            "input": {
+              "draftId": "⟦id:36⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_c86336823a146337dd363d55",
+            "name": "send_email",
+            "input": {
+              "draftId": "⟦id:37⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_db5bdb7d3fd39d398e694d10",
+            "name": "send_email",
+            "input": {
+              "draftId": "⟦id:38⟧"
+            }
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_b4fc175aac27e9e5a471f03d",
+            "name": "send_email",
+            "input": {
+              "draftId": "⟦id:39⟧"
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 11088,
+          "outputTokens": 196,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 1564,
+        "firstTokenMs": 210,
+        "provider": "fake"
+      }
+    },
+    "1bd8212bfbf19b93b48a31023d30f9b987dfc38f4f30495b3329ad74b0ea1b46": {
+      "turn": 5,
+      "lastMessage": "tool_result(toolu_b063bacb162502e51a15d40d), tool_result(toolu_14c03c09f838311cad689940), tool_result(toolu_30d9e45aee1b9e0f7e5b8cab), tool_result(toolu_803e33d",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 7 leads not contacted for more than 7 days.\nI drafted 7 follow-up emails and queued 7 emails for sending: Tom Becker <tom@globex.test>, Jonas Berg <jonas.berg@wideworld.example>, Daniel Kim <daniel.kim@margie.example>, Lucas Martin <lucas.martin@woodgrove.example>, Emma Novak <emma.novak@northwind.example>, Sofia Rossi <sofia.rossi@fourthcoffee.example> and Hannah Weber <hannah.weber@wideworld.example>.\nWaiting for approval: send_email ×7 (rules: default:external)."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 11904,
+          "outputTokens": 119,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 1068,
+        "firstTokenMs": 250,
+        "provider": "fake"
+      }
+    },
+    "bbf92e7a0ab687be186ffd78c305a42133fc9c219f209c38895e457de7b7ec8c": {
+      "turn": 6,
+      "lastMessage": "<approval_results batch=\"261efaf5-199d-4584-b64a-6092b1206241\" at=\"2026-10-05T00:24:15.066Z\">\n{\"executed\":6,\"rejected\":1,\"expired\":0,\"failed\":0,\"edited\":0,\"outc",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Creating call tasks for the follow-ups that were not sent."
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_bba60f24da114fe214cc34c7",
+            "name": "create_task",
+            "input": {
+              "title": "Call Tom Becker",
+              "description": "The follow-up email to tom@globex.test was not approved; call instead.",
+              "relatedType": "contact",
+              "relatedId": "⟦id:6⟧",
+              "assigneeId": "⟦id:0⟧",
+              "priority": 2
+            }
+          }
+        ],
+        "stopReason": "tool_use",
+        "usage": {
+          "inputTokens": 14529,
+          "outputTokens": 91,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 925,
+        "firstTokenMs": 256,
+        "provider": "fake"
+      }
+    },
+    "05cdba5a6a0fb3e08157061e791109c35cff7f993abc637a1e972c5128ac04bd": {
+      "turn": 7,
+      "lastMessage": "tool_result(toolu_bba60f24da114fe214cc34c7)",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 7 leads not contacted for more than 7 days.\nSent 6 follow-up emails: Jonas Berg, Daniel Kim, Lucas Martin, Emma Novak, Sofia Rossi and Hannah Weber.\nNot sent (rejected or expired): Tom Becker; I created 1 call task for them instead.\nDone."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 14854,
+          "outputTokens": 61,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 720,
+        "firstTokenMs": 193,
+        "provider": "fake"
+      }
+    }
+  }
+}

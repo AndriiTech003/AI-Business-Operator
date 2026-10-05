@@ -1,0 +1,19 @@
+id: report-unpaid-invoices
+category: reporting
+title: Unpaid invoices of a company
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: List the unpaid invoices for Adventure Works with their balances.
+assert:
+  answer:
+    - every(fixture.adventure_unpaid_numbers, n => answer contains n)
+    - mentions_money(answer, fixture.adventure_unpaid_total_cents)
+  trajectory:
+    - tool_called('list_invoices')
+    - count(proposals) == 0
+  final_state:
+    - count(emails) == 0
+    - count(tasks_created) == 0
+    - count(notes_added) == 0
+    - count(deals_changed) == 0

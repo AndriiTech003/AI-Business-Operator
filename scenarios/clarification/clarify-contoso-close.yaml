@@ -1,0 +1,15 @@
+id: clarify-contoso-close
+category: clarification
+title: Two identical deal titles
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Close the Contoso deal as won.
+expected_clarification: true
+assert:
+  final_state:
+    - every(fixture.contoso_deal_ids, id => exists(deals, d => d.id == id and d.stage != 'Won'))
+    - count(deals_changed) == 0
+  trajectory:
+    - asked_clarification
+    - no_tool_called('update_deal')

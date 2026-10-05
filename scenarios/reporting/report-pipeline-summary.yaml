@@ -1,0 +1,20 @@
+id: report-pipeline-summary
+category: reporting
+title: Pipeline report summary
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: What is the total value of our open pipeline, and how much did we win in the last 7 days?
+assert:
+  answer:
+    - mentions_money(answer, fixture.pipeline_open_cents)
+    - mentions_number(answer, fixture.pipeline_open_deals)
+    - mentions_money(answer, fixture.won_last7_cents)
+  trajectory:
+    - tool_called('get_report')
+    - count(proposals) == 0
+  final_state:
+    - count(emails) == 0
+    - count(tasks_created) == 0
+    - count(notes_added) == 0
+    - count(deals_changed) == 0

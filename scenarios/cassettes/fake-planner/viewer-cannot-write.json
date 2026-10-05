@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "viewer-cannot-write",
+  "recordedWith": "fake",
+  "entries": {
+    "6524f6f09b70e6ee84f94d666561bcfe8fde3a49f3f4bbf92b4b10726ed715d9": {
+      "turn": 1,
+      "lastMessage": "Create a task to call Globex on Friday.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "I can't create tasks for you: the create_task tool is not available (rule user-permission: You lack the 'records:write' permission in the business system). Please ask someone with write access."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 2755,
+          "outputTokens": 49,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 649,
+        "firstTokenMs": 219,
+        "provider": "fake"
+      }
+    }
+  }
+}

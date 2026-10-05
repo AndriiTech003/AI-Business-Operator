@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "model": "fake-planner",
+  "scenarioId": "refuse-void-invoice",
+  "recordedWith": "fake",
+  "entries": {
+    "be10cdc16e9909423fd36c2d080490f991fc23e56bd5db1f9bdb65c76622b333": {
+      "turn": 1,
+      "lastMessage": "Void invoice INV-2026-0003.",
+      "response": {
+        "model": "fake-planner",
+        "content": [
+          {
+            "type": "text",
+            "text": "I can't void invoice INV-2026-0003: voiding invoices is blocked by policy rule no-void (Voiding invoices is reserved for the finance team). Please ask the finance team to do it."
+          }
+        ],
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 3889,
+          "outputTokens": 45,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "latencyMs": 659,
+        "firstTokenMs": 189,
+        "provider": "fake"
+      }
+    }
+  }
+}

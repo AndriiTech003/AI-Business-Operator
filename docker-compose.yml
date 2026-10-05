@@ -1,0 +1,146 @@
+name: ai-business-operator
+
+x-agent-env: &agent-env
+  DATABASE_URL: postgres://aio:aio@postgres:5432/aio
+  REDIS_URL: redis://redis:6379/6
+  REDIS_PREFIX: aio
+  BOP_API_URL: http://bop-api:4500
+  BOP_MCP_URL: http://bop-mcp:4530/mcp
+  BOP_WEBHOOK_SECRET: ${BOP_JWT_SECRET:-change-me}
+  SESSION_SECRET: ${AIO_SESSION_SECRET:-change-me-session}
+  CREDENTIALS_KEY: ${AIO_CREDENTIALS_KEY:-change-me-credentials-key-32-bytes}
+  LLM_PROVIDER: ${LLM_PROVIDER:-fake}
+  LLM_MODEL: ${LLM_MODEL:-}
+  ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+  OPENAI_BASE_URL: ${OPENAI_BASE_URL:-}
+  OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+  DEMO_DAILY_COST_LIMIT_USD: ${DEMO_DAILY_COST_LIMIT_USD:-5}
+  CONSOLE_URL: http://localhost:4611
+  CORS_ORIGINS: http://localhost:4611,http://localhost:4511
+  OPERATOR_TOKEN: ${OPERATOR_TOKEN:-change-me-operator-token}
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4318
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: aio
+      POSTGRES_PASSWORD: aio
+      POSTGRES_DB: aio
+    volumes:
+      - ./infra/postgres-init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U aio']
+      interval: 5s
+      retries: 20
+
+  redis:
+    image: redis:8-alpine
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 5s
+
+  mailpit:
+    image: axllent/mailpit:latest
+    ports: ['8025:8025']
+
+  minio:
+    image: minio/minio:latest
+    command: server /data
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+
+  bop-api:
+    image: ghcr.io/ashamrai/business-operations-platform-api:latest
+    environment: &bop-env
+      DATABASE_URL: postgres://aio:aio@postgres:5432/bop
+      REDIS_URL: redis://redis:6379/5
+      JWT_SECRET: ${BOP_JWT_SECRET:-change-me}
+      SMTP_URL: smtp://mailpit:1025
+      S3_ENDPOINT: http://minio:9000
+      PUBLIC_API_URL: http://localhost:4500
+      PUBLIC_WEB_URL: http://localhost:4511
+      API_HOST: 0.0.0.0
+      SEED_ON_START: '1'
+      OPERATOR_URL: http://agent:4600/integrations/bop/ai-step
+      OPERATOR_TOKEN: ${OPERATOR_TOKEN:-change-me-operator-token}
+      OPERATOR_EMBED_URL: http://localhost:4611/embed/ask-operator.js
+      OPERATOR_AGENT_URL: http://localhost:4600
+      OPERATOR_CONSOLE_URL: http://localhost:4611
+    ports: ['4500:4500']
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
+  bop-worker:
+    image: ghcr.io/ashamrai/business-operations-platform-worker:latest
+    environment: *bop-env
+    depends_on: [bop-api]
+
+  bop-scheduler:
+    image: ghcr.io/ashamrai/business-operations-platform-scheduler:latest
+    environment: *bop-env
+    depends_on: [bop-api]
+
+  bop-mcp:
+    image: ghcr.io/ashamrai/business-operations-platform-ops-mcp:latest
+    environment:
+      BOP_API_URL: http://bop-api:4500
+      MCP_HOST: 0.0.0.0
+      MCP_PORT: '4530'
+    depends_on: [bop-api]
+
+  bop-web:
+    image: ghcr.io/ashamrai/business-operations-platform-web:latest
+    ports: ['4511:80']
+    depends_on: [bop-api]
+
+  agent:
+    build: { context: ., dockerfile: apps/agent/Dockerfile }
+    environment:
+      <<: *agent-env
+      AGENT_ROLE: api
+      AGENT_PUBLIC_URL: http://agent:4600
+    ports: ['4600:4600']
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+      bop-mcp: { condition: service_started }
+
+  agent-worker:
+    build: { context: ., dockerfile: apps/agent/Dockerfile }
+    environment:
+      <<: *agent-env
+      AGENT_ROLE: worker
+      AGENT_PUBLIC_URL: http://agent:4600
+    depends_on: [agent]
+
+  console:
+    build: { context: ., dockerfile: apps/console/Dockerfile }
+    environment:
+      AGENT_PUBLIC_URL: http://localhost:4600
+      BOP_WEB_URL: http://localhost:4511
+    ports: ['4611:80']
+    depends_on: [agent]
+
+  jaeger:
+    image: jaegertracing/jaeger:2.10.0
+    ports: ['16686:16686']
+
+  prometheus:
+    image: prom/prometheus:v3.6.0
+    volumes:
+      - ./infra/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports: ['4690:9090']
+
+  grafana:
+    image: grafana/grafana:12.2.0
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: 'true'
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+    volumes:
+      - ./infra/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./infra/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports: ['4691:3000']
+    depends_on: [prometheus]

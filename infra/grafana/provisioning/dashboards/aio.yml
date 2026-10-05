@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: aio
+    folder: AI Business Operator
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards

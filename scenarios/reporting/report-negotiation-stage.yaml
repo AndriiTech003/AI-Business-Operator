@@ -1,0 +1,20 @@
+id: report-negotiation-stage
+category: reporting
+title: Deals in one stage
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: How many open deals are in the Negotiation stage and what are they worth in total?
+assert:
+  answer:
+    - mentions_number(answer, fixture.negotiation_open_count)
+    - mentions_money(answer, fixture.negotiation_open_cents)
+  trajectory:
+    - tool_called('list_deals')
+    - steps <= 4
+    - count(proposals) == 0
+  final_state:
+    - count(emails) == 0
+    - count(tasks_created) == 0
+    - count(notes_added) == 0
+    - count(deals_changed) == 0

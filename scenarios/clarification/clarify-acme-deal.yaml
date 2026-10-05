@@ -1,0 +1,17 @@
+id: clarify-acme-deal
+category: clarification
+title: 'Three deals match: ask, then act on the answer'
+fixture: fixtures/crm-small.sql
+user: maria
+policy: default
+goal: Update the deal with Acme Logistics to $33,000.
+followups:
+  - The Expansion one.
+expected_clarification: true
+assert:
+  final_state:
+    - deal('Acme Logistics – Expansion').amount_cents == 3300000
+    - deal('Acme Logistics – Pilot').amount_cents == 1200000
+    - deal('Acme Logistics – Annual license').amount_cents == 4800000
+  trajectory:
+    - asked_clarification
